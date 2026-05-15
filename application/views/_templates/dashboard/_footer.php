@@ -99,6 +99,9 @@
 
 <script src="<?= base_url() ?>/assets/app/js/jquery-thumbnail-cut.js"></script>
 
+<!-- Fase 2: Stats Animation (count-up, stagger, pulse) -->
+<script src="<?= base_url() ?>/assets/app/js/stats-animation.js"></script>
+
 <!-- Custom JS -->
 <script type="text/javascript">
     $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
