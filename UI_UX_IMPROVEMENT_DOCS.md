@@ -215,17 +215,20 @@ Layer 5: linear-gradient 135° → base emerald #23d18b → #0f7a52
 
 ## 🔲 Yang Belum Dikerjakan (TODO)
 
-### Fase 1 — Micro-Animations & Feel (Prioritas Tinggi)
-*Dampak besar, effort kecil, murni CSS + sedikit JS*
+### Fase 1 — Micro-Animations & Feel ✅ SELESAI
+*Commit: `cf4816fa`*
 
-- [ ] **1.1** Hover card animation — `transform: translateY(-4px)` + shadow intensify pada semua `.card`
-- [ ] **1.2** Button press effect — `transform: scale(0.97)` saat klik
-- [ ] **1.3** Page fade-in — `@keyframes fadeInUp` pada `.content-wrapper` saat halaman load
-- [ ] **1.4** Sidebar nav link hover — smooth background fill left-to-right
-- [ ] **1.5** Avatar siswa hover zoom subtle
-- [ ] **1.6** Nav link active indicator — animated left border
+- [x] **1.1** Card hover lift — `translateY(-5px)` + shadow intensify (card, small-box, info-box)
+- [x] **1.2** Button press — `scale(0.95) translateY(1px)` on `:active`, `translateY(-1px)` on hover
+- [x] **1.3** Page fade-in — `@keyframes fadeInUp` pada `.content-wrapper` (0.45s spring)
+- [x] **1.4** Sidebar nav link hover — animated `::before` left-border indicator + icon scale
+- [x] **1.5** Avatar siswa hover zoom — `scale(1.08)` + double ring (white + emerald)
+- [x] **1.6** Table row hover — emerald background tint + inset left border 3px
+- [x] **BONUS** Form input focus ring — emerald border + glow `rgba(28,200,138,0.15)`
+- [x] **BONUS** `.badge-pulse` — `@keyframes pulse-ring` untuk status aktif
+- [x] **BONUS** Global link transition + dropdown smooth fade-in
 
-**File target:** `mystyle.css` + `modern_emerald.css`
+**File Changed:** `assets/app/css/mystyle.css` (216 lines added)
 
 ---
 
@@ -403,7 +406,8 @@ git checkout -b experiment/test-something master
 | `b7a29ef0` | Setelah modern_emerald.css hero pattern | ✅ Checkpoint 2 |
 | `b940f1e7` | Setelah login pattern | ✅ Checkpoint 3 |
 | `89c98fb4` | Setelah fix semua siswa views | ✅ Checkpoint 4 |
-| `9939e15e` | HEAD saat ini — semua fase foundation done | ✅ Checkpoint aktif |
+| `9939e15e` | Foundation semua fase done | ✅ Checkpoint 5 |
+| `cf4816fa` | **Phase 1 Micro-Animations COMPLETE** | ✅ Checkpoint aktif |
 
 > [!TIP]
 > Setiap awal fase baru (Fase 1, 2, 3, dst), catat hash commit terakhir di tabel ini agar ada checkpoint yang jelas.
@@ -492,7 +496,7 @@ background-size: 22px 22px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
 ## 📊 Progress Overview
 
 ```
-Fase 1 — Micro-Animations     ░░░░░░░░░░  0%   [ ] Belum dimulai
+Fase 1 — Micro-Animations     ██████████ 100%  [✅] SELESAI — commit cf4816fa
 Fase 2 — Dashboard Stats       ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 3 — Skeleton Loading      ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 4 — Empty States          ░░░░░░░░░░  0%   [ ] Belum dimulai
