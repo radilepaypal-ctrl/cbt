@@ -10,15 +10,17 @@
 <div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-6">
-                    <h1><?= $judul ?></h1>
-                </div>
-                <div class="col-6">
-                    <button onclick="window.history.back();" type="button" class="btn btn-sm btn-danger float-right">
-                        <i class="fas fa-arrow-circle-left"></i><span
-                                class="d-none d-sm-inline-block ml-1">Kembali</span>
-                    </button>
+            <div class="row mb-3">
+                <div class="col-12 premium-banner">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="font-weight-bold text-white"><?= $judul ?></h2>
+                            <p class="opacity-75 mb-0 text-white">Lengkapi detail jadwal ujian untuk dipublikasikan kepada siswa.</p>
+                        </div>
+                        <button onclick="window.history.back();" type="button" class="btn btn-danger">
+                            <i class="fas fa-arrow-circle-left"></i><span class="ml-2">Kembali</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

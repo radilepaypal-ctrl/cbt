@@ -12,9 +12,10 @@ if (isset($jadwal_ujian)) {
 <div class="content-wrapper bg-white pt-4">
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1><?= $judul ?></h1>
+            <div class="row mb-3">
+                <div class="col-12 premium-banner">
+                    <h2 class="font-weight-bold text-white"><?= $judul ?></h2>
+                    <p class="opacity-75 mb-0 text-white">Kelola jadwal ujian, ulangan harian, dan penilaian lainnya dengan mudah.</p>
                 </div>
             </div>
         </div>
