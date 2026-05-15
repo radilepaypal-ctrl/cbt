@@ -1,21 +1,29 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper bg-white">
-    <section class="content-header p-0 d-flex align-items-end"
-             style="height: 400px; background: url('<?= base_url('assets/img/wall2.png') ?>')">
-        <div class="container-fluid pl-0 pr-0 pb-0 pt-4" style="background-color: rgba(255,255,255,0.7)">
+<div class="content-wrapper">
+    <section class="content-header p-0 hero-header"
+             style="background-image: url('<?= base_url('assets/img/wall2.png') ?>');">
+        <div class="hero-overlay"></div>
+        <div class="container-fluid pl-4 pr-4 pb-0 pt-4 hero-content">
+            <div class="row m-0">
+                <div class="col-12 mb-4">
+                     <h2 class="font-weight-bold text-white mb-0">Panel Kendali</h2>
+                     <p class="text-white opacity-75 mb-0">Manajemen data sistem <?= $setting->nama_aplikasi ?></p>
+                </div>
+            </div>
+            <!-- Row for Info Boxes inside Hero -->
             <div class="row m-0">
                 <?php foreach ($info_box as $info) : ?>
-                    <div class="col-md-2 col-3">
-                        <div class="shadow small-box bg-<?= $info->box ?>">
+                    <div class="col-md-2 col-6">
+                        <div class="small-box shadow-lg">
                             <div class="inner">
                                 <h5 class="mb-0"><b><?= $info->total; ?></b></h5>
-                                <span><?= $info->title; ?></span>
+                                <span class="text-sm"><?= $info->title; ?></span>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-<?= $info->icon ?>" style="top: 5px"></i>
+                                <i class="fa fa-<?= $info->icon ?>"></i>
                             </div>
-                            <a href="<?= base_url() . $info->url ?>" class="small-box-footer">
-                                Detail <i class="fa fa-arrow-circle-right"></i>
+                            <a href="<?= base_url() . $info->url ?>" class="small-box-footer" style="background: rgba(28, 200, 138, 0.1); color: var(--primary-soft) !important;">
+                                Detail <i class="fa fa-arrow-circle-right ml-1"></i>
                             </a>
                         </div>
                     </div>
@@ -23,6 +31,7 @@
             </div>
         </div>
     </section>
+
     <!-- Main content -->
     <section class="content mt-4">
         <div class="container-fluid">
@@ -34,7 +43,7 @@
                                 JADWAL HARI INI
                             </div>
                             <div class="card-tools">
-                                <a href="<?= base_url('kelasjadwal') ?>" type="button" onclick="" class="btn btn-sm">
+                                <a href="<?= base_url('kelasjadwal') ?>" type="button" class="btn btn-sm btn-default">
                                     <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -134,11 +143,11 @@
                         </div>
                     </div>
                     <div class="card card-success my-shadow">
-                        <div class="card-header">
+                        <div class="card-header border-bottom-0">
                             <div class="card-title">Aktifitas</div>
                             <div class="card-tools">
-                                <button type="button" onclick="hapusLogAktivitas()" class="btn btn-sm">
-                                    <i class="fa fa-trash text-white"></i>
+                                <button type="button" onclick="hapusLogAktivitas()" class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i>
                                 </button>
                             </div>
                         </div>
@@ -150,7 +159,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card card-danger my-shadow">
-                        <div class="card-header">
+                        <div class="card-header border-bottom-0">
                             <h4 class="card-title">Penilaian</h4>
                         </div>
                         <div class="card-body">
@@ -158,9 +167,9 @@
                                 <?php foreach ($ujian_box as $info) : ?>
                                     <div class="col-md-4 col-6" style="min-height: 60px">
                                         <a href="<?= base_url() . $info->url ?>">
-                                            <div class="info-box border p-1" style="min-height: 60px">
+                                            <div class="info-box border p-1 shadow-sm" style="min-height: 60px; border-radius: 15px;">
                                                 <div class="info-box-content p-1 text-danger">
-                                                    <span class="info-box-text"><?= $info->title; ?></span>
+                                                    <span class="info-box-text text-sm"><?= $info->title; ?></span>
                                                     <h5 class="info-box-number m-0"><?= $info->total; ?></h5>
                                                 </div>
                                             </div>
@@ -169,7 +178,7 @@
                                 <?php endforeach; ?>
                                 <div class="col-md-4 col-6" style="min-height: 60px">
                                     <a href="<?= base_url('cbttoken') ?>">
-                                        <div class="info-box border p-1" style="min-height: 60px">
+                                        <div class="info-box border p-1 shadow-sm" style="min-height: 60px; border-radius: 15px;">
                                             <div class="info-box-content p-1 text-danger">
                                                 <span class="info-box-text">Token
                                                     <small class="float-right d-none" id="interval">-- : -- : --</small></span>
@@ -187,9 +196,6 @@
                                 </div>
                                 <div class="col-12 table-responsive">
                                     <?php
-                                    //echo '<pre>';
-                                    //var_dump($kelas_ujian);
-                                    //echo '</pre>';
                                     $no = 1;
                                     $jadwal_ujian = $jadwals_ujian[date('Y-m-d')] ?? [];
                                     if (count($jadwal_ujian) > 0) : ?>
@@ -221,7 +227,6 @@
                                                                         count($peserta[$ruang][$sesi->sesi_id]) : 0;
                                                                     if ($bank_kelas['kelas_id'] != null && $cnt > 0) {
                                                                         $total_peserta += $cnt;
-                                                                        //$badge_kelas .= ' <span class="badge badge-info">' . $kelases[$bank_kelas['kelas_id']] . ' ' . $cnt . ' siswa</span>';
                                                                         $nama_kls = isset($kelases[$bank_kelas['kelas_id']]) ? $kelases[$bank_kelas['kelas_id']] : '- -';
                                                                         $badge_kelas .= ' <span class="badge badge-info">' . $nama_kls . ' ' . $cnt . ' siswa</span>';
                                                                     }
@@ -257,7 +262,7 @@
                         </div>
                     </div>
                     <div class="card card-light my-shadow mb-3">
-                        <div class="card-header"><b>INFO/PENGUMUMAN</b></div>
+                        <div class="card-header border-bottom-0"><b>INFO/PENGUMUMAN</b></div>
                         <div class="card-body">
                             <div class="konten-pengumuman">
                                 <div id="pengumuman">
@@ -275,6 +280,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 </div>
 

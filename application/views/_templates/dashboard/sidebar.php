@@ -49,13 +49,13 @@
                 {
                     'name': 'Data Umum', 'icon': 'fas fa-server', 'cbt': '1',
                     'submenu': [
-                        {'name':"Tahun Pelajaran", 'link':"datatahun", 'icon': 'far fa-calendar-check'},
-                        {'name':"Mata Pelajaran", 'link':"datamapel", 'icon': 'fa fa-book'},
-                        {'name':"Jurusan", 'link':"datajurusan", 'icon': 'fa fa-flask'},
-                        {'name':"Siswa", 'link':"datasiswa", 'icon': 'fa fa-users'},
-                        {'name':"Kelas / Rombel", 'link':"datakelas", 'icon': 'fa fa-school'},
-                        {'name':"Ekstrakurikuler", 'link':"dataekstra", 'icon': 'fa fa-chess'},
-                        {'name':"Guru", 'link':"dataguru", 'icon': 'fa fa-chalkboard-teacher'}
+                        {'name': "Tahun Pelajaran", 'link': "datatahun", 'icon': 'far fa-calendar-check'},
+                        {'name': "Mata Pelajaran", 'link': "datamapel", 'icon': 'fa fa-book'},
+                        {'name': "Jurusan", 'link': "datajurusan", 'icon': 'fa fa-flask'},
+                        {'name': "Siswa", 'link': "datasiswa", 'icon': 'fa fa-users'},
+                        {'name': "Kelas / Rombel", 'link': "datakelas", 'icon': 'fa fa-school'},
+                        {'name': "Ekstrakurikuler", 'link': "dataekstra", 'icon': 'fa fa-chess'},
+                        {'name': "Guru", 'link': "dataguru", 'icon': 'fa fa-chalkboard-teacher'}
                     ]
                 },
                 {
@@ -70,16 +70,16 @@
                 {
                     'name': 'Data Ujian', 'icon': 'fa fa-user-graduate', 'cbt': '1',
                     'submenu': [
-                        {'name':"Jenis Ujian", 'link':"cbtjenis", 'icon': 'fa fa-project-diagram'},
-                        {'name':"Sesi", 'link':"cbtsesi", 'icon': 'far fa-clock'},
-                        {'name':"Ruang", 'link':"cbtruang", 'icon': 'fa fa-door-open'},
-                        {'name':"Atur Ruang/Sesi", 'link':"cbtsesisiswa", 'icon': 'fa fa-user-clock'},
-                        {'name':"Nomor Peserta", 'link':"cbtnomorpeserta", 'icon': 'far fa-id-card'},
-                        {'name':"Bank Soal", 'link':"cbtbanksoal", 'icon': 'far fa-folder-open'},
-                        {'name':"Jadwal", 'link':"cbtjadwal", 'icon': 'far fa-calendar-alt'},
-                        {'name':"Alokasi Waktu", 'link':"cbtalokasi", 'icon': 'fa fa-clock-o'},
-                        {'name':"Pengawas", 'link':"cbtpengawas", 'icon': 'fa fa-briefcase'},
-                        {'name':"Token", 'link':"cbttoken", 'icon': 'fa fa-key'}
+                        {'name': "Jenis Ujian", 'link': "cbtjenis", 'icon': 'fa fa-project-diagram'},
+                        {'name': "Sesi", 'link': "cbtsesi", 'icon': 'far fa-clock'},
+                        {'name': "Ruang", 'link': "cbtruang", 'icon': 'fa fa-door-open'},
+                        {'name': "Atur Ruang/Sesi", 'link': "cbtsesisiswa", 'icon': 'fa fa-user-clock'},
+                        {'name': "Nomor Peserta", 'link': "cbtnomorpeserta", 'icon': 'far fa-id-card'},
+                        {'name': "Bank Soal", 'link': "cbtbanksoal", 'icon': 'far fa-folder-open'},
+                        {'name': "Jadwal", 'link': "cbtjadwal", 'icon': 'far fa-calendar-alt'},
+                        {'name': "Alokasi Waktu", 'link': "cbtalokasi", 'icon': 'fa fa-clock-o'},
+                        {'name': "Pengawas", 'link': "cbtpengawas", 'icon': 'fa fa-briefcase'},
+                        {'name': "Token", 'link': "cbttoken", 'icon': 'fa fa-key'}
                     ]
                 },
                 {
@@ -93,20 +93,20 @@
                 {
                     'name': 'Hasil E-Learning', 'icon': 'fas fa-microscope', 'cbt': '0',
                     'submenu': [
-                        {'name': 'Nilai Harian', 'link':"kelasstatus", 'icon': 'far fa-clipboard'},
-                        {'name': 'Kehadiran Harian', 'link':"kelasabsensiharian", 'icon': 'fa fa-user-check'},
-                        {'name': 'Kehadiran Bulanan', 'link':"kelasabsensibulanan", 'icon': 'fa fa-tasks'},
-                        {'name': 'Rekap Nilai', 'link':"kelasnilai", 'icon': 'fa fa-trophy'},
+                        {'name': 'Nilai Harian', 'link': "kelasstatus", 'icon': 'far fa-clipboard'},
+                        {'name': 'Kehadiran Harian', 'link': "kelasabsensiharian", 'icon': 'fa fa-user-check'},
+                        {'name': 'Kehadiran Bulanan', 'link': "kelasabsensibulanan", 'icon': 'fa fa-tasks'},
+                        {'name': 'Rekap Nilai', 'link': "kelasnilai", 'icon': 'fa fa-trophy'},
                     ]
                 },
                 {
                     'name': 'Pelaksanaan Ujian', 'icon': 'fas fa-graduation-cap', 'cbt': '1',
                     'submenu': [
-                        {'name': 'Cetak', 'link':"cbtcetak", 'icon': 'fa fa-print'},
-                        {'name': 'Status Siswa', 'link':"cbtstatus", 'icon': 'fa fa-user-clock'},
-                        {'name': 'Hasil Ujian', 'link':"cbtnilai", 'icon': 'fa fa-file-alt'},
-                        {'name': 'Analisis Soal', 'link':"cbtanalisis", 'icon': 'fa fa-chart-line'},
-                        {'name': 'Rekap Nilai', 'link':"cbtrekap", 'icon': 'fas fa-trophy'},
+                        {'name': 'Cetak', 'link': "cbtcetak", 'icon': 'fa fa-print'},
+                        {'name': 'Status Siswa', 'link': "cbtstatus", 'icon': 'fa fa-user-clock'},
+                        {'name': 'Hasil Ujian', 'link': "cbtnilai", 'icon': 'fa fa-file-alt'},
+                        {'name': 'Analisis Soal', 'link': "cbtanalisis", 'icon': 'fa fa-chart-line'},
+                        {'name': 'Rekap Nilai', 'link': "cbtrekap", 'icon': 'fas fa-trophy'},
                     ]
                 },
             ]
@@ -120,28 +120,28 @@
             ]
         },
         {
-            'header': 'PENGATURAN',  'cbt': '1',
+            'header': 'PENGATURAN', 'cbt': '1',
             'menu': [
                 {'name': 'Profile Sekolah', 'link': 'settings', 'icon': 'fas fa-university', 'cbt': '1',},
                 {
                     'name': 'User Management', 'icon': 'fa fa-users-cog', 'cbt': '1',
                     'submenu': [
-                        {'name': 'Administrator', 'link':"useradmin", 'icon': 'fas fa-cog'},
-                        {'name': 'Guru', 'link':"userguru", 'icon': 'fas fa-user-tie'},
-                        {'name': 'Siswa', 'link':"usersiswa", 'icon': 'fas fa-users'}
+                        {'name': 'Administrator', 'link': "useradmin", 'icon': 'fas fa-cog'},
+                        {'name': 'Guru', 'link': "userguru", 'icon': 'fas fa-user-tie'},
+                        {'name': 'Siswa', 'link': "usersiswa", 'icon': 'fas fa-users'}
                     ]
                 },
                 {
                     'name': 'Database', 'icon': 'fa fa-users-cog', 'cbt': '1',
                     'submenu': [
-                        {'name': 'Backup', 'link':"dbmanager", 'icon': 'fas fa-database'},
-                        {'name': 'Data Manager', 'link':"dbclear", 'icon': 'fas fa-database'},
+                        {'name': 'Backup', 'link': "dbmanager", 'icon': 'fas fa-database'},
+                        {'name': 'Data Manager', 'link': "dbclear", 'icon': 'fas fa-database'},
                         //{'name': 'Update', 'link':"update", 'icon': ''}
                     ]
                 },
             ]
         },
-        {'name': 'LOGOUT', 'link': 'pengumuman', 'icon': 'fas fa-sign-out-alt',  'cbt': '1'},
+        {'name': 'LOGOUT', 'link': 'logout', 'icon': 'fas fa-sign-out-alt', 'cbt': '1'},
     ];
 
     const isLogin = localStorage.getItem('garudaCBT.login')
@@ -159,7 +159,7 @@
                     return
                 }
                 if (menu.submenu) {
-                    var subs = menu.submenu.map(function(item) {
+                    var subs = menu.submenu.map(function (item) {
                         if (item['link'].includes('/')) {
                             return item['link'].split('/')[1]
                         } else return item['link'];
@@ -172,7 +172,7 @@
                     menu.submenu.forEach(function (sub) {
                         htmlMenu += `<li class="nav-item">
                             <a href="${base_url + sub.link}"
-                               class="nav-link ${page+'/'+pageact === sub.link || page === sub.link ? "active" : ""}">
+                               class="nav-link ${page + '/' + pageact === sub.link || page === sub.link ? "active" : ""}">
                                 <i class="${sub.icon} nav-icon"></i>
                                 <p>${sub.name}</p>
                             </a>
@@ -196,5 +196,5 @@
                 </li>`;
         }
     })
-    $('#tree-menus').html(htmlMenu)
+    $('#tree-menus').html(htmlMenu);
 </script>

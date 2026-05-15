@@ -48,9 +48,9 @@
                 {
                     'name': 'Wali Kelas', 'icon': 'fas fa-chart-pie', 'cbt': '1', 'wali': true,
                     'submenu': [
-                        {'name': 'Siswa', 'link':"walisiswa", 'icon': 'fas fa-users'},
-                        {'name': 'Struktur', 'link':"walistruktur", 'icon': 'far fa-circle'},
-                        {'name': 'Catatan', 'link':"walicatatan", 'icon': 'fa fa-pencil-alt'}
+                        {'name': 'Siswa', 'link': "walisiswa", 'icon': 'fas fa-users'},
+                        {'name': 'Struktur', 'link': "walistruktur", 'icon': 'far fa-circle'},
+                        {'name': 'Catatan', 'link': "walicatatan", 'icon': 'fa fa-pencil-alt'}
                     ]
                 },
                 {
@@ -60,23 +60,23 @@
                         {'name': "Materi", 'link': "kelasmateri/materi", 'icon': 'fa fa-pencil-ruler'},
                         {'name': "Tugas", 'link': "kelasmateri/tugas", 'icon': 'fa fa-drafting-compass'},
                         {'name': "Jadwal Materi/Tugas", 'link': "kelasmaterijadwal", 'icon': 'fa fa-calendar-alt'},
-                        {'name': 'Nilai Harian', 'link':"kelasstatus", 'icon': 'far fa-clipboard'},
-                        {'name': 'Kehadiran Harian', 'link':"kelasabsensiharian", 'icon': 'fa fa-user-check'},
-                        {'name': 'Kehadiran Bulanan', 'link':"kelasabsensibulanan", 'icon': 'fa fa-tasks'},
-                        {'name': 'Rekap Nilai', 'link':"kelasnilai", 'icon': 'fa fa-trophy'},
-                        {'name': 'Catatan Guru', 'link':"kelascatatan", 'icon': 'fa fa-pencil-alt'},
+                        {'name': 'Nilai Harian', 'link': "kelasstatus", 'icon': 'far fa-clipboard'},
+                        {'name': 'Kehadiran Harian', 'link': "kelasabsensiharian", 'icon': 'fa fa-user-check'},
+                        {'name': 'Kehadiran Bulanan', 'link': "kelasabsensibulanan", 'icon': 'fa fa-tasks'},
+                        {'name': 'Rekap Nilai', 'link': "kelasnilai", 'icon': 'fa fa-trophy'},
+                        {'name': 'Catatan Guru', 'link': "kelascatatan", 'icon': 'fa fa-pencil-alt'},
                     ]
                 },
                 {
                     'name': 'Ulangan / Ujian', 'icon': 'fa fa-user-graduate', 'cbt': '1',
                     'submenu': [
-                        {'name':"Bank Soal", 'link':"cbtbanksoal", 'icon': 'far fa-folder-open'},
-                        {'name':"Jadwal", 'link':"cbtjadwal", 'icon': 'far fa-calendar-alt'},
-                        {'name': 'Cetak', 'link':"cbtcetak", 'icon': 'fa fa-print'},
-                        {'name': 'Status Siswa', 'link':"cbtstatus", 'icon': 'fa fa-user-clock'},
-                        {'name': 'Hasil Ujian', 'link':"cbtnilai", 'icon': 'fa fa-file-alt'},
-                        {'name': 'Analisis Soal', 'link':"cbtanalisis", 'icon': 'fa fa-chart-line'},
-                        {'name': 'Rekap Nilai', 'link':"cbtrekap", 'icon': 'fas fa-trophy'},
+                        {'name': "Bank Soal", 'link': "cbtbanksoal", 'icon': 'far fa-folder-open'},
+                        {'name': "Jadwal", 'link': "cbtjadwal", 'icon': 'far fa-calendar-alt'},
+                        {'name': 'Cetak', 'link': "cbtcetak", 'icon': 'fa fa-print'},
+                        {'name': 'Status Siswa', 'link': "cbtstatus", 'icon': 'fa fa-user-clock'},
+                        {'name': 'Hasil Ujian', 'link': "cbtnilai", 'icon': 'fa fa-file-alt'},
+                        {'name': 'Analisis Soal', 'link': "cbtanalisis", 'icon': 'fa fa-chart-line'},
+                        {'name': 'Rekap Nilai', 'link': "cbtrekap", 'icon': 'fas fa-trophy'},
                     ]
                 },
             ]
@@ -120,14 +120,14 @@
                 {'name': 'Arsip Rapor', 'link': 'bukurapor', 'icon': 'fas fa-university', 'cbt': '0',},
             ]
         },
-        {'name': 'LOGOUT', 'link': '', 'icon': 'fas fa-sign-out-alt', 'cbt': '1'},
+        {'name': 'LOGOUT', 'link': 'logout', 'icon': 'fas fa-sign-out-alt', 'cbt': '1'},
     ];
 
     const isLogin = localStorage.getItem('garudaCBT.login')
     const isCbtMode = isLogin ? isLogin === '1' : false
     let htmlMenu = '';
     menus.forEach(function (header) {
-        console.log(header)
+        //console.log(header)
         if (isCbtMode && header.cbt === '0') {
             return
         }
@@ -144,7 +144,7 @@
                     return
                 }
                 if (menu.submenu) {
-                    var subs = menu.submenu.map(function(item) {
+                    var subs = menu.submenu.map(function (item) {
                         if (item['link'].includes('/')) {
                             return item['link'].split('/')[1]
                         } else return item['link'];
@@ -157,7 +157,7 @@
                     menu.submenu.forEach(function (sub) {
                         htmlMenu += `<li class="nav-item">
                             <a href="${base_url + sub.link}"
-                               class="nav-link ${page+'/'+pageact === sub.link || page === sub.link ? "active" : ""}">
+                               class="nav-link ${page + '/' + pageact === sub.link || page === sub.link ? "active" : ""}">
                                 <i class="${sub.icon} nav-icon"></i>
                                 <p>${sub.name}</p>
                             </a>
@@ -181,5 +181,5 @@
                 </li>`;
         }
     })
-    $('#tree-menus').html(htmlMenu)
+    $('#tree-menus').html(htmlMenu);
 </script>
