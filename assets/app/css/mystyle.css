@@ -260,3 +260,219 @@ body, .content-wrapper {
     line-height: 1.4;
 }
 
+/* ============================================================
+ * FASE 1 — MICRO-ANIMATIONS
+ * Semua animasi murni CSS. Zero JS.
+ * Ref: UI_UX_IMPROVEMENT_DOCS.md - Phase 1 ✅
+ * ============================================================ */
+
+/* ----------------------------------------------------------
+ * 1.3 — Page Fade-In saat halaman load
+ * Konten muncul smooth dari bawah, tidak langsung "nendang"
+ * ---------------------------------------------------------- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.content-wrapper {
+    animation: fadeInUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Animasi lebih halus untuk section dalam */
+.content > .container,
+.content > .container-fluid {
+    animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+
+/* ----------------------------------------------------------
+ * 1.1 — Card Hover: lift + shadow intensify
+ * Terasa seperti kartu "terangkat" saat di-hover
+ * ---------------------------------------------------------- */
+.card {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.25s ease !important;
+    will-change: transform;
+}
+
+.card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.10),
+                0 4px 12px rgba(28, 200, 138, 0.08) !important;
+}
+
+/* Small-box (stat boxes) hover */
+.small-box {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.25s ease !important;
+    will-change: transform;
+}
+
+.small-box:hover {
+    transform: translateY(-5px) scale(1.01) !important;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Info-box hover (selain yang bg-transparent) */
+.info-box:not(.bg-transparent) {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.25s ease !important;
+}
+
+.info-box:not(.bg-transparent):hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09) !important;
+}
+
+/* ----------------------------------------------------------
+ * 1.2 — Button Press Effect
+ * Feedback visual saat klik — terasa "tertekan"
+ * ---------------------------------------------------------- */
+.btn {
+    transition: transform 0.15s ease,
+                box-shadow 0.15s ease,
+                background-color 0.2s ease,
+                opacity 0.2s ease !important;
+    will-change: transform;
+}
+
+.btn:active {
+    transform: scale(0.95) translateY(1px) !important;
+    box-shadow: none !important;
+}
+
+.btn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+/* ----------------------------------------------------------
+ * 1.4 — Sidebar Nav Link Hover
+ * Animasi fill background left-to-right + icon scale
+ * ---------------------------------------------------------- */
+.nav-sidebar .nav-link {
+    position: relative;
+    overflow: hidden;
+    transition: color 0.2s ease,
+                background-color 0.25s ease,
+                padding-left 0.2s ease !important;
+}
+
+/* Animated left-border indicator */
+.nav-sidebar .nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: var(--primary-soft);
+    transform: scaleY(0);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: center;
+}
+
+.nav-sidebar .nav-link:hover::before,
+.nav-sidebar .nav-link.active::before {
+    transform: scaleY(1);
+}
+
+/* Icon dalam sidebar — scale naik saat hover */
+.nav-sidebar .nav-link .nav-icon {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-sidebar .nav-link:hover .nav-icon {
+    transform: scale(1.2);
+}
+
+/* ----------------------------------------------------------
+ * 1.5 — Avatar Siswa Hover Zoom
+ * Foto profil sedikit membesar + ring emerald muncul
+ * ---------------------------------------------------------- */
+.info-box.bg-transparent img.avatar {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease !important;
+    cursor: default;
+}
+
+.info-box.bg-transparent img.avatar:hover {
+    transform: scale(1.08) !important;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.9),
+                0 0 0 7px rgba(28, 200, 138, 0.5),
+                0 8px 24px rgba(0,0,0,0.2) !important;
+}
+
+/* ----------------------------------------------------------
+ * 1.6 — Table Row Hover
+ * Baris tabel diberi highlight hijau terang saat di-hover
+ * ---------------------------------------------------------- */
+.table tbody tr {
+    transition: background-color 0.18s ease,
+                box-shadow 0.18s ease;
+}
+
+.table-hover tbody tr:hover,
+.table tbody tr:hover {
+    background-color: rgba(28, 200, 138, 0.05) !important;
+    box-shadow: inset 3px 0 0 var(--primary-soft);
+}
+
+/* ----------------------------------------------------------
+ * BONUS: Form Input Focus Ring
+ * Input focus muncul dengan ring emerald yang smooth
+ * ---------------------------------------------------------- */
+.form-control {
+    transition: border-color 0.2s ease,
+                box-shadow 0.25s ease !important;
+}
+
+.form-control:focus {
+    border-color: var(--primary-soft) !important;
+    box-shadow: 0 0 0 3px rgba(28, 200, 138, 0.15) !important;
+}
+
+/* ----------------------------------------------------------
+ * BONUS: Badge Pulse untuk status aktif
+ * Badge dengan class .badge-pulse berkedip pelan
+ * ---------------------------------------------------------- */
+@keyframes pulse-ring {
+    0%   { box-shadow: 0 0 0 0 rgba(28, 200, 138, 0.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(28, 200, 138, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(28, 200, 138, 0); }
+}
+
+.badge-pulse {
+    animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+/* ----------------------------------------------------------
+ * BONUS: Link & Nav transition global
+ * ---------------------------------------------------------- */
+a {
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Smooth transition semua elemen interaktif */
+input, select, textarea, .custom-select {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Dropdown menu muncul smooth */
+.dropdown-menu {
+    animation: fadeInUp 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: top center;
+}
+
