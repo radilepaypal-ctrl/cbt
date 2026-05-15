@@ -1,5 +1,57 @@
+/* ============================================================
+ * LOGIN PAGE — Modern Pattern Background
+ * Dot grid + radial glow + diagonal stripe, pure CSS
+ * ============================================================ */
 body {
-  background-color: #f8fafb; }
+  /* Dot grid halus di background putih */
+  background-image:
+      radial-gradient(circle, rgba(28,200,138,0.12) 1.5px, transparent 1.5px),
+      radial-gradient(ellipse at 5% 0%,  rgba(28,200,138,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 95% 100%, rgba(28,200,138,0.06) 0%, transparent 50%);
+  background-size: 28px 28px, 100% 100%, 100% 100%;
+  background-color: #f5fdf9;
+}
+
+/* Panel kiri (bg) — emerald pattern penuh */
+.content .bg {
+  background-image:
+      radial-gradient(circle, rgba(255,255,255,0.16) 1.5px, transparent 1.5px),
+      radial-gradient(ellipse at 90% 10%, rgba(255,255,255,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 90%, rgba(15,122,82,0.5)   0%, transparent 50%),
+      repeating-linear-gradient(
+          45deg,
+          transparent, transparent 18px,
+          rgba(255,255,255,0.03) 18px, rgba(255,255,255,0.03) 19px
+      ),
+      linear-gradient(135deg, #23d18b 0%, #0f7a52 100%) !important;
+  background-size: 22px 22px, 100% 100%, 100% 100%, 100% 100%, 100% 100% !important;
+  background-color: #0f7a52 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Circle deco kanan atas di panel kiri login */
+.content .bg::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  pointer-events: none;
+}
+
+/* Circle deco kiri bawah di panel kiri login */
+.content .bg::after {
+  content: '';
+  position: absolute;
+  bottom: -50px; left: 30px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+
 
 p {
   color: #b3b3b3;
