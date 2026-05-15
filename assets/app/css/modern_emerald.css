@@ -1,0 +1,187 @@
+/* 
+ * ============================================================
+ * HYBRID RESTORE UI - GLOBAL SYNC
+ * Merging Modern Soft Emerald with Striking Legacy Elements
+ * ============================================================
+ */
+
+:root {
+    --primary-soft: #1cc88a;
+    --primary-dark: #13855c;
+    --primary-light: #f0fdf4;
+    --warning-soft: #f6c23e;
+    --danger-soft: #e74a3b;
+    --info-soft: #36b9cc;
+    --text-main: #4a5568;
+    --text-muted: #718096;
+    --bg-body: #f7fafc;
+    --radius-main: 20px;
+    --radius-comp: 12px;
+    --soft-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* --- Layout & Core --- */
+body, .content-wrapper {
+    background-color: var(--bg-body) !important;
+    color: var(--text-main) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* --- MODERN HERO HEADER — CSS-only Pattern (dot grid + glow) --- */
+.content-header.hero-header {
+    height: auto !important;
+    min-height: 190px !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    overflow: hidden;
+
+    /*
+     * Layer stack (bottom to top):
+     *  1. Dot grid — titik-titik halus 22px
+     *  2. Glow kanan atas — aksen terang
+     *  3. Glow kiri bawah — depth
+     *  4. Stripe diagonal samar 45°
+     *  5. Base gradient emerald
+     */
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px),
+        radial-gradient(ellipse at 95% 5%,  rgba(255,255,255,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 5%  95%, rgba(19,133,92,0.5)    0%, transparent 55%),
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 18px,
+            rgba(255,255,255,0.03) 18px,
+            rgba(255,255,255,0.03) 19px
+        ),
+        linear-gradient(135deg, #23d18b 0%, #0f7a52 100%) !important;
+
+    background-size:
+        22px 22px,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100% !important;
+
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0 !important;
+    box-shadow: 0 6px 24px rgba(15, 122, 82, 0.3) !important;
+}
+
+/* Decorative circle aksen — sudut kanan atas */
+.content-header.hero-header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+}
+
+/* Decorative circle aksen — sudut kiri bawah */
+.content-header.hero-header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+}
+
+/* Overlay tidak diperlukan */
+.hero-overlay {
+    display: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* --- Striking Info Boxes (Hybrid Style) --- */
+.small-box {
+    border-radius: var(--radius-main) !important;
+    border: none !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+    overflow: visible !important; /* Allow icon to pop out slightly */
+}
+
+.small-box:hover {
+    transform: translateY(-5px);
+}
+
+.small-box .inner {
+    padding: 1.5rem !important;
+}
+
+.small-box .inner h3, .small-box .inner h5 {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    color: var(--primary-dark) !important;
+}
+
+/* THE MENCOLOK ICONS (Legacy Power) */
+.small-box .icon {
+    top: 5px !important;
+    right: 15px !important;
+    z-index: 0;
+}
+
+.small-box .icon i {
+    font-size: 60px !important; /* Very striking size */
+    opacity: 0.15 !important;
+    transition: all 0.3s ease;
+}
+
+.small-box:hover .icon i {
+    font-size: 70px !important;
+    opacity: 0.25 !important;
+}
+
+/* --- Sidebar Profile Panel --- */
+.user-panel {
+    background: rgba(28, 200, 138, 0.03);
+    border-radius: 15px;
+    margin: 10px 15px !important;
+    padding: 15px !important;
+    border: 1px solid rgba(28, 200, 138, 0.05);
+}
+
+.user-panel .image img {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.user-panel .info a {
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+}
+
+/* --- Global Harmonization --- */
+.card {
+    border-radius: var(--radius-main) !important;
+    border: none !important;
+    box-shadow: var(--soft-shadow) !important;
+}
+
+.btn {
+    border-radius: var(--radius-comp) !important;
+    font-weight: 600 !important;
+    padding: 0.7rem 1.5rem !important;
+}
+
+/* Restore App Logic Styles (Exam Interface) */
+.container-jawaban { display: block; position: relative; padding-left: 50px; margin-bottom: 30px; cursor: pointer; font-size: 18px; }
+.checkmark { position: absolute; top: -5px; left: 0; height: 40px; width: 40px; background-color: #eee; border-radius: 50%; border: 1px solid #ccc; font-size: 24px; line-height: 1.6; text-align: center; }
+.container-jawaban input:checked ~ .checkmark { background-color: var(--primary-soft); color: #fff; border-color: var(--primary-soft); }
