@@ -303,6 +303,122 @@ Layer 5: linear-gradient 135° → base emerald #23d18b → #0f7a52
 
 ---
 
+## 🔀 Version Control (Git)
+
+### Branch Strategy
+```
+master                          ← Produksi stabil (JANGAN langsung edit di sini)
+└── feature/ui-ux-improvement-2026  ← Branch aktif semua pekerjaan UI/UX ini
+    ├── [commit] style(mystyle): ...
+    ├── [commit] style(modern_emerald): ...
+    ├── [commit] style(login): ...
+    ├── [commit] fix(siswa-views): ...
+    ├── [commit] style(admin-guru-views): ...
+    └── [commit berikutnya setiap fase selesai...]
+```
+
+### Commit Convention
+Format: `type(scope): pesan singkat`
+
+| Type | Kapan Digunakan |
+|------|-----------------|
+| `style` | Perubahan CSS, visual, layout |
+| `fix` | Bugfix (spacing, override CSS, dll) |
+| `feat` | Fitur baru (animasi baru, komponen baru) |
+| `docs` | Update dokumentasi |
+| `refactor` | Refactoring kode tanpa ubah fungsi |
+| `js` | Perubahan JavaScript |
+
+**Contoh commit yang baik:**
+```bash
+git commit -m "feat(exam): add progress bar and question navigation grid
+
+- Sticky progress bar showing X/Y answered
+- Color-coded question grid: green=answered, gray=unanswered, red=flagged
+- Smooth scroll transition between questions
+- Timer pulse red animation when < 5 minutes
+
+Refs: UI_UX_IMPROVEMENT_DOCS.md - Phase 5, Task 5.1-5.4"
+```
+
+### Workflow Setiap Sesi Kerja
+```bash
+# 1. Pastikan di branch yang benar
+git branch
+# Harus tampil: * feature/ui-ux-improvement-2026
+
+# 2. Lihat status perubahan sebelum mulai
+git status
+git diff assets/app/css/mystyle.css   # lihat diff spesifik
+
+# 3. Setelah selesai edit, commit
+git add [file yang diubah]
+git commit -m "type(scope): pesan"
+
+# 4. Sync ke Apache
+cp /root/cbt/cbt/[file] /var/www/html/cbt/[file]
+```
+
+### Rollback — Jika Ada Masalah
+
+**Lihat daftar commit:**
+```bash
+git log --oneline
+```
+
+**Batalkan perubahan file yang belum di-commit:**
+```bash
+git restore assets/app/css/mystyle.css
+```
+
+**Kembali ke commit tertentu (lihat dulu, tidak permanen):**
+```bash
+git checkout [hash-commit] -- assets/app/css/mystyle.css
+# Contoh:
+git checkout 0525d038 -- assets/app/css/mystyle.css
+```
+
+**Undo commit terakhir (simpan perubahan, hanya batalkan commit):**
+```bash
+git reset HEAD~1 --soft
+```
+
+**Undo commit terakhir + buang perubahan (HATI-HATI!):**
+```bash
+git reset HEAD~1 --hard
+```
+
+**Kembali ke kondisi master yang stabil:**
+```bash
+git checkout master
+# Atau buat branch baru dari master untuk eksperimen
+git checkout -b experiment/test-something master
+```
+
+### Hash Commit Penting (Checkpoint)
+| Hash | Deskripsi | Kondisi |
+|------|-----------|----------|
+| `9f5407eb` | `master` sebelum UI/UX dimulai | ✅ Titik aman kembali |
+| `0525d038` | Setelah mystyle.css emerald theme | ✅ Checkpoint 1 |
+| `b7a29ef0` | Setelah modern_emerald.css hero pattern | ✅ Checkpoint 2 |
+| `b940f1e7` | Setelah login pattern | ✅ Checkpoint 3 |
+| `89c98fb4` | Setelah fix semua siswa views | ✅ Checkpoint 4 |
+| `9939e15e` | HEAD saat ini — semua fase foundation done | ✅ Checkpoint aktif |
+
+> [!TIP]
+> Setiap awal fase baru (Fase 1, 2, 3, dst), catat hash commit terakhir di tabel ini agar ada checkpoint yang jelas.
+
+### Merge ke Master (Saat Sudah Siap)
+```bash
+# Pastikan semua di-commit dan di-test
+git checkout master
+git merge feature/ui-ux-improvement-2026 --no-ff \
+  -m "feat: UI/UX improvement - Foundation Phase complete"
+git push origin master
+```
+
+---
+
 ## 🔄 SOP Deploy (Setiap Selesai Edit)
 
 ### Quick Sync — Single File
