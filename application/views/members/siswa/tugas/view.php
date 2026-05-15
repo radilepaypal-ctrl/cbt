@@ -8,7 +8,7 @@
 
 $dataFileAttach = $log_selesai != null && $log_selesai->file != null ? unserialize($log_selesai->file ?? '') : [];
 ?>
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper">
     <div class="sticky">
     </div>
     <section class="content overlap">

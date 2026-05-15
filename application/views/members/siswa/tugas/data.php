@@ -7,7 +7,7 @@
  */
 
 ?>
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper">
     <div class="sticky">
     </div>
     <section class="content overlap p-4">

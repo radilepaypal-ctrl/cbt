@@ -33,7 +33,7 @@ $arrHari = ['Ming', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Ming'];
 $arrBulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 ?>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper">
     <!-- Main content -->
     <div class="sticky">
     </div>

@@ -9,7 +9,7 @@
 $ada_nilai = $logs != null && $logs->nilai != null && $logs->nilai != '0';
 ?>
 
-<div class="content-wrapper" style="margin-top: -1px;">
+<div class="content-wrapper">
     <div class="sticky">
     </div>
     <section class="content overlap">
