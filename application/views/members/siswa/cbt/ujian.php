@@ -140,6 +140,8 @@
 <script src="<?= base_url() ?>/assets/plugins/element-queries/ResizeSensor.js"></script>
 <script src="<?= base_url() ?>/assets/plugins/katex/katex.min.js"></script>
 <script src="<?= base_url() ?>/assets/app/js/content-zoom-slider.js"></script>
+<!-- Fase 5: Exam Polish (timer warning color — read-only MutationObserver) -->
+<script src="<?= base_url() ?>/assets/app/js/exam-polish.js"></script>
 
 <script>
     var elem = document.documentElement;
