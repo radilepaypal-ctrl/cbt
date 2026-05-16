@@ -232,14 +232,16 @@ Layer 5: linear-gradient 135° → base emerald #23d18b → #0f7a52
 
 ---
 
-### Fase 2 — Dashboard Stats Animation
-*Meningkatkan engagement admin/guru saat buka dashboard*
+### Fase 2 — Dashboard Stats Animation ✅ SELESAI
+*Commit: `3b464291`*
 
-- [ ] **2.1** Count-up animation untuk angka di `.small-box` (0 → angka nyata, 1.5 detik)
-- [ ] **2.2** Progress bar animasi pada grafik statistik
-- [ ] **2.3** Pulse dot pada status ujian aktif
+- [x] **2.1** Count-up animation untuk angka di `.small-box` dan `.info-box-number` (0 → angka nyata, 1.4 detik, easing `easeOutQuart`)
+- [x] **2.2** Staggered entrance animation pada stat cards — cascade 90ms per card dengan spring cubic-bezier
+- [x] **2.3** Pulse dot pada status ujian aktif — `#token-view` + `.badge-success/.badge-warning` menggunakan class `.badge-pulse`
 
-**File target:** `assets/app/js/dashboard.js` + view `dashboard.php`
+**Files Changed:**
+- `assets/app/js/stats-animation.js` — File baru, 3 fungsi utama: `initCountUp()`, `initStaggeredEntrance()`, `initPulseDot()`
+- `application/views/_templates/dashboard/_footer.php` — Tambah `<script>` include `stats-animation.js` (baris 103)
 
 ---
 
@@ -407,7 +409,8 @@ git checkout -b experiment/test-something master
 | `b940f1e7` | Setelah login pattern | ✅ Checkpoint 3 |
 | `89c98fb4` | Setelah fix semua siswa views | ✅ Checkpoint 4 |
 | `9939e15e` | Foundation semua fase done | ✅ Checkpoint 5 |
-| `cf4816fa` | **Phase 1 Micro-Animations COMPLETE** | ✅ Checkpoint aktif |
+| `cf4816fa` | Phase 1 Micro-Animations COMPLETE | ✅ Checkpoint |
+| `3b464291` | **Phase 2 Dashboard Stats Animation COMPLETE** | ✅ Checkpoint aktif |
 
 > [!TIP]
 > Setiap awal fase baru (Fase 1, 2, 3, dst), catat hash commit terakhir di tabel ini agar ada checkpoint yang jelas.
@@ -497,7 +500,7 @@ background-size: 22px 22px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
 
 ```
 Fase 1 — Micro-Animations     ██████████ 100%  [✅] SELESAI — commit cf4816fa
-Fase 2 — Dashboard Stats       ░░░░░░░░░░  0%   [ ] Belum dimulai
+Fase 2 — Dashboard Stats       ██████████ 100%  [✅] SELESAI — commit 3b464291
 Fase 3 — Skeleton Loading      ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 4 — Empty States          ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 5 — Exam Interface        ░░░░░░░░░░  0%   [ ] Belum dimulai
