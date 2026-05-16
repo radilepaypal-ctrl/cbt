@@ -245,14 +245,19 @@ Layer 5: linear-gradient 135° → base emerald #23d18b → #0f7a52
 
 ---
 
-### Fase 3 — Skeleton Loading
-*Mengganti spinner `fa-spin` dengan skeleton yang lebih modern*
+### Fase 3 — Skeleton Loading ✅ SELESAI
+*Commit: `faa502cd`*
 
-- [ ] **3.1** Skeleton card untuk list pengumuman/post di dashboard
-- [ ] **3.2** Skeleton table untuk jadwal hari ini
-- [ ] **3.3** CSS skeleton class `.skeleton` global
+- [x] **3.1** Skeleton card Aktivitas — `#log-list` via MutationObserver sebelum `load_log()` resolve
+- [x] **3.2** Skeleton post cards — `#pengumuman` sebelum `getPosts()` resolve, fade-out smooth saat konten tiba
+- [x] **3.3** CSS global `.skeleton` + `.skeleton-gray` — shimmer animation `@keyframes skeleton-shimmer`, siap pakai di elemen apapun
+- [x] **BONUS** Skeleton table rows jadwal — 6 row placeholder dengan fade-in reveal setelah 600ms
+- [x] **BONUS** `.skeleton-wrapper.fade-out` — transisi opacity 350ms agar perpindahan skeleton → konten tidak kasar
 
-**File target:** `mystyle.css` + JS di masing-masing view
+**Files Changed:**
+- `assets/app/css/mystyle.css` — +170 baris: base skeleton, log, post, table variants
+- `assets/app/js/skeleton-loading.js` — File baru, MutationObserver-based, zero coupling dengan dashboard.js
+- `application/views/_templates/dashboard/_footer.php` — Tambah include `skeleton-loading.js`
 
 ---
 
@@ -410,7 +415,8 @@ git checkout -b experiment/test-something master
 | `89c98fb4` | Setelah fix semua siswa views | ✅ Checkpoint 4 |
 | `9939e15e` | Foundation semua fase done | ✅ Checkpoint 5 |
 | `cf4816fa` | Phase 1 Micro-Animations COMPLETE | ✅ Checkpoint |
-| `3b464291` | **Phase 2 Dashboard Stats Animation COMPLETE** | ✅ Checkpoint aktif |
+| `3b464291` | Phase 2 Dashboard Stats Animation COMPLETE | ✅ Checkpoint |
+| `faa502cd` | **Phase 3 Skeleton Loading COMPLETE** | ✅ Checkpoint aktif |
 
 > [!TIP]
 > Setiap awal fase baru (Fase 1, 2, 3, dst), catat hash commit terakhir di tabel ini agar ada checkpoint yang jelas.
@@ -501,7 +507,7 @@ background-size: 22px 22px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
 ```
 Fase 1 — Micro-Animations     ██████████ 100%  [✅] SELESAI — commit cf4816fa
 Fase 2 — Dashboard Stats       ██████████ 100%  [✅] SELESAI — commit 3b464291
-Fase 3 — Skeleton Loading      ░░░░░░░░░░  0%   [ ] Belum dimulai
+Fase 3 — Skeleton Loading      ██████████ 100%  [✅] SELESAI — commit faa502cd
 Fase 4 — Empty States          ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 5 — Exam Interface        ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 6 — Form Redesign         ░░░░░░░░░░  0%   [ ] Belum dimulai
