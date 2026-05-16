@@ -1371,3 +1371,282 @@ input[type="number"]::-webkit-outer-spin-button {
 .content {
     max-width: 100%;
 }
+
+/* ==========================================================
+ * FASE 8 — Nice to Have
+ * 8.1 Dark Mode, 8.4 Login SVG Animation
+ * Ref: UI_UX_IMPROVEMENT_DOCS.md - Phase 8 ✅
+ * ========================================================== */
+
+/* ----------------------------------------------------------
+ * 8.1 — DARK MODE
+ *
+ * Diaktifkan dengan class 'dark-mode' pada <body>.
+ * Toggle via dark-mode.js + localStorage['garudaCBT.theme'].
+ * Mengoverride CSS custom properties dan komponen kunci.
+ * ---------------------------------------------------------- */
+
+/* ── Override CSS Variables ── */
+body.dark-mode {
+    --bg-body:      #1a1f2e !important;
+    --text-main:    #e2e8f0 !important;
+    --text-muted:   #94a3b8 !important;
+    --primary-light: #1e3a2a !important;
+    --soft-shadow:  0 4px 20px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2) !important;
+    background-color: #1a1f2e !important;
+    color: #e2e8f0 !important;
+}
+
+/* ── Content wrapper ── */
+body.dark-mode .content-wrapper,
+body.dark-mode .wrapper {
+    background-color: #1a1f2e !important;
+    color: #e2e8f0 !important;
+}
+
+/* ── Card ── */
+body.dark-mode .card {
+    background-color: #242b3d !important;
+    border-color: #2d3748 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .card-header {
+    background-color: #1e2536 !important;
+    border-color: #2d3748 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .card-footer {
+    background-color: #1e2536 !important;
+    border-color: #2d3748 !important;
+}
+
+body.dark-mode .card-title {
+    color: #cbd5e0 !important;
+}
+
+/* ── Tabel ── */
+body.dark-mode .table {
+    color: #e2e8f0 !important;
+    border-color: #2d3748 !important;
+}
+
+body.dark-mode .table thead th {
+    background-color: #1e2536 !important;
+    border-color: #2d3748 !important;
+    color: #a0aec0 !important;
+}
+
+body.dark-mode .table tbody tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.03) !important;
+}
+
+body.dark-mode .table tbody tr:hover {
+    background-color: rgba(28, 200, 138, 0.08) !important;
+}
+
+body.dark-mode .table td,
+body.dark-mode .table th {
+    border-color: #2d3748 !important;
+}
+
+/* ── Form controls ── */
+body.dark-mode .form-control {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .form-control:focus {
+    background-color: #374151 !important;
+    border-color: var(--primary-soft) !important;
+    color: #f7fafc !important;
+    box-shadow: 0 0 0 3px rgba(28, 200, 138, 0.2) !important;
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #718096 !important;
+}
+
+/* ── Select2 ── */
+body.dark-mode .select2-container--bootstrap4 .select2-selection {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .select2-dropdown {
+    background-color: #242b3d !important;
+    border-color: #4a5568 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .select2-results__option {
+    color: #e2e8f0 !important;
+}
+
+/* ── Navbar & Sidebar (AdminLTE) ── */
+body.dark-mode .main-header.navbar {
+    background-color: #1e2536 !important;
+    border-color: #2d3748 !important;
+}
+
+body.dark-mode .main-header .nav-link {
+    color: #a0aec0 !important;
+}
+
+body.dark-mode .main-header .nav-link:hover {
+    color: var(--primary-soft) !important;
+}
+
+body.dark-mode .main-sidebar,
+body.dark-mode .main-sidebar .sidebar {
+    background-color: #141824 !important;
+}
+
+/* ── Breadcrumb & content-header ── */
+body.dark-mode .content-header {
+    background-color: transparent !important;
+}
+
+body.dark-mode .breadcrumb {
+    background-color: transparent !important;
+}
+
+body.dark-mode .breadcrumb-item a {
+    color: var(--primary-soft) !important;
+}
+
+/* ── Dropdown menus ── */
+body.dark-mode .dropdown-menu {
+    background-color: #242b3d !important;
+    border-color: #2d3748 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .dropdown-item {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: rgba(28, 200, 138, 0.1) !important;
+    color: var(--primary-soft) !important;
+}
+
+body.dark-mode .dropdown-divider {
+    border-color: #2d3748 !important;
+}
+
+/* ── Modal ── */
+body.dark-mode .modal-content {
+    background-color: #242b3d !important;
+    border-color: #2d3748 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .modal-header {
+    border-color: #2d3748 !important;
+}
+
+body.dark-mode .modal-footer {
+    border-color: #2d3748 !important;
+}
+
+/* ── SweetAlert2 override (tidak ikut CSS variable) ── */
+body.dark-mode .swal2-popup {
+    background-color: #242b3d !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .swal2-title {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .swal2-content,
+body.dark-mode .swal2-html-container {
+    color: #a0aec0 !important;
+}
+
+/* ── Label & text ── */
+body.dark-mode .card-body label,
+body.dark-mode .form-group label {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .text-dark { color: #e2e8f0 !important; }
+body.dark-mode .text-muted { color: #718096 !important; }
+body.dark-mode .text-secondary { color: #a0aec0 !important; }
+
+/* ── Tombol dark mode: transisi icon halus ── */
+.btn-theme-toggle .theme-toggle-icon {
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+body.dark-mode .btn-theme-toggle .theme-toggle-icon {
+    color: #f6c23e;
+    transform: rotate(30deg);
+}
+
+/* ----------------------------------------------------------
+ * 8.4 — LOGIN CARD: Animasi SVG floating background halus
+ *        Menggantikan rencana carousel (tidak relevan dengan
+ *        desain login single-card saat ini).
+ * ---------------------------------------------------------- */
+
+/* Floating circle ornamen di header login card */
+.login-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    animation: loginFloat 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Animasi float naik-turun */
+@keyframes loginFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%       { transform: translateY(-12px) scale(1.05); }
+}
+
+/* Ornamen kiri atas header */
+.login-header img {
+    animation: loginLogoFloat 4s ease-in-out infinite;
+}
+
+@keyframes loginLogoFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-5px); }
+}
+
+/* Background pattern halus di bawah card login */
+.login-container::before {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(28,200,138,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(19,133,92,0.04) 0%, transparent 50%);
+    animation: loginBgDrift 20s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes loginBgDrift {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(2%, 2%); }
+}
+
+.login-container {
+    position: relative;
+}
+
+.login-card {
+    position: relative;
+    z-index: 1;
+}

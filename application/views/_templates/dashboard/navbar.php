@@ -211,6 +211,13 @@
         <li class="nav-item">
             <div id="live-clock" class="text-right"></div>
         </li>
+        <!-- Dark Mode Toggle -->
+        <li class="nav-item">
+            <a href="#" class="nav-link btn-theme-toggle" id="theme-toggle" title="Mode Gelap">
+                <i class="fas fa-moon theme-toggle-icon"></i>
+            </a>
+        </li>
     </ul>
 
 </nav>
+<script src="<?= base_url() ?>/assets/app/js/dark-mode.js"></script>

@@ -14,4 +14,51 @@
         <br>
         <small>Belajar kapanpun dimanapun</small>
     </div>
+
+    <!-- Kanan navbar: badge ujian + dark mode -->
+    <ul class="navbar-nav ml-auto mr-2">
+        <!-- Badge notifikasi ujian aktif hari ini -->
+        <li class="nav-item">
+            <a href="<?= base_url('siswa/cbt') ?>" class="nav-link" id="ujian-badge-btn" title="Ujian Hari Ini">
+                <i class="fas fa-clipboard-list"></i>
+                <span class="badge badge-danger navbar-badge d-none" id="ujian-badge-count">0</span>
+            </a>
+        </li>
+        <!-- Dark mode toggle -->
+        <li class="nav-item">
+            <a href="#" class="nav-link btn-theme-toggle" title="Mode Gelap">
+                <i class="fas fa-moon theme-toggle-icon"></i>
+            </a>
+        </li>
+    </ul>
 </nav>
+
+<script src="<?= base_url() ?>/assets/app/js/dark-mode.js"></script>
+
+<script>
+/* Badge ujian: fetch count dari /api/badge_ujian */
+(function() {
+    function loadBadge() {
+        $.getJSON(base_url + 'api/badge_ujian', function(data) {
+            var count = data.count || 0;
+            var badge = document.getElementById('ujian-badge-count');
+            if (badge && count > 0) {
+                badge.textContent = count > 9 ? '9+' : count;
+                badge.classList.remove('d-none');
+                /* Animasi pulse ringan */
+                badge.style.animation = 'examPulse 1.5s ease-in-out 3';
+            }
+        }).fail(function() {
+            /* Gagal fetch — badge tetap tersembunyi, tidak error */
+        });
+    }
+
+    /* Load saat DOM siap */
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadBadge);
+    } else {
+        loadBadge();
+    }
+})();
+</script>
+
