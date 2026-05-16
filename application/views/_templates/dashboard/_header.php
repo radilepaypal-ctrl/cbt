@@ -41,10 +41,6 @@
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet"
           href="<?= base_url() ?>/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Toastr -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/jquery.toast.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/toastr/toastr.min.css">

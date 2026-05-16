@@ -1087,3 +1087,99 @@ input, select, textarea, .custom-select {
     transform: translateY(-2px) !important;
     box-shadow: 0 6px 20px rgba(28, 200, 138, 0.45) !important;
 }
+
+/* ==========================================================
+ * FASE 6 — Form & Input Polish
+ * Focus ring emerald global + label styling konsisten.
+ * Berlaku untuk semua halaman admin, guru, dan siswa.
+ * Ref: UI_UX_IMPROVEMENT_DOCS.md - Phase 6 ✅
+ * ========================================================== */
+
+/* ----------------------------------------------------------
+ * 6.1 — Focus ring emerald global untuk semua .form-control
+ *        Menggantikan focus ring Bootstrap biru default.
+ * ---------------------------------------------------------- */
+.form-control:focus {
+    border-color: var(--primary-soft) !important;
+    box-shadow: 0 0 0 3px rgba(28, 200, 138, 0.15) !important;
+    outline: none !important;
+}
+
+/* Textarea khusus (soal, keterangan) */
+textarea.form-control:focus {
+    border-color: var(--primary-soft) !important;
+    box-shadow: 0 0 0 3px rgba(28, 200, 138, 0.12) !important;
+}
+
+/* ----------------------------------------------------------
+ * 6.2 — Select2: focus ring emerald saat dropdown terbuka
+ * ---------------------------------------------------------- */
+.select2-container--bootstrap4 .select2-selection:focus,
+.select2-container--open .select2-selection {
+    border-color: var(--primary-soft) !important;
+    box-shadow: 0 0 0 3px rgba(28, 200, 138, 0.15) !important;
+    outline: none !important;
+}
+
+/* Select2 highlight pilihan aktif */
+.select2-container--bootstrap4 .select2-results__option--highlighted {
+    background-color: var(--primary-soft) !important;
+}
+
+/* Select2 pilihan yang sudah terpilih */
+.select2-container--bootstrap4 .select2-results__option[aria-selected="true"] {
+    background-color: var(--primary-light) !important;
+    color: var(--primary-dark) !important;
+}
+
+/* Tag/badge di select2 multiple */
+.select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+    background-color: var(--primary-soft) !important;
+    border-color: var(--primary-dark) !important;
+    color: #fff !important;
+}
+
+/* ----------------------------------------------------------
+ * 6.3 — Label form: konsisten, uppercase kecil, muted
+ *        Berlaku global di card-body form
+ * ---------------------------------------------------------- */
+.card-body label,
+.form-group label {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    color: var(--text-muted) !important;
+    margin-bottom: 0.35rem !important;
+}
+
+/* Pengecualian: label di tabel, list-group, dan badge
+   (jangan terkena style label form) */
+.table label,
+.list-group-item label,
+.icheck-primary label,
+.custom-control-label,
+.btn label {
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    color: inherit !important;
+    margin-bottom: 0 !important;
+}
+
+/* ----------------------------------------------------------
+ * 6.4 — Input file (dropify area) — emerald border on hover
+ * ---------------------------------------------------------- */
+.dropify-wrapper:hover {
+    border-color: var(--primary-soft) !important;
+    background-color: rgba(28, 200, 138, 0.03) !important;
+}
+
+/* ----------------------------------------------------------
+ * 6.5 — Input number tanpa spinner browser
+ * ---------------------------------------------------------- */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 0.5;
+}

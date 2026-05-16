@@ -302,29 +302,57 @@ Layer 5: linear-gradient 135° → base emerald #23d18b → #0f7a52
 
 ---
 
-### Fase 6 — Form & Input Redesign
-- [ ] **6.1** Floating label pada input login
-- [ ] **6.2** Focus ring emerald pada semua input form
-- [ ] **6.3** Inline validation feedback yang smooth
-- [ ] **6.4** Password show/hide toggle
+### Fase 6 — Form & Input Polish *(Direvisi berdasarkan Audit Fase 9)*
+> Scope asli direvisi: login page sudah modern (CSS inline), floating label & password toggle sudah ada.
+> Fokus ke cleanup, konsistensi CSS, dan focus ring global.
 
-**File target:** `login-style.css` + `mystyle.css`
+- [ ] **6.1** Hapus 6 baris CSS duplikat di `_header.php` (select2, icheck di-load 2x)
+- [ ] **6.2** Hapus `login-main.js` dari auth footer (dead code sejak login dimodernisasi)
+- [ ] **6.3** Pindahkan CSS inline login ke `login-style.css` (refactor tanpa perubahan tampilan)
+- [ ] **6.4** Focus ring emerald global — `.form-control:focus` + `.select2-container--open`
+- [ ] **6.5** Label polish global — uppercase, weight, spacing konsisten
 
----
-
-### Fase 7 — Mobile Optimization
-- [ ] **7.1** Audit semua tabel — tambah horizontal scroll wrapper
-- [ ] **7.2** Card grid pada mobile 1 kolom
-- [ ] **7.3** Touch-friendly button size (min 44px tap target)
-- [ ] **7.4** Exam interface mobile-first
+**File target:** `_templates/dashboard/_header.php`, `_templates/auth/_footer.php`, `login-style.css`, `mystyle.css`
 
 ---
 
-### Fase 8 — Nice to Have
-- [ ] **8.1** Dark mode toggle (CSS custom properties switch)
-- [ ] **8.2** Welcome message personal di dashboard siswa ("Halo, Ahmad!")
-- [ ] **8.3** Notifikasi badge di navbar untuk jadwal ujian hari ini
-- [ ] **8.4** Login page carousel ganti ke ilustrasi SVG
+### Fase 7 — Mobile Optimization *(Direvisi berdasarkan Audit Fase 9)*
+> Temuan kritis: `user-scalable=no` aktif di 5 template, DataTables tidak bisa dibungkus HTML.
+
+- [ ] **7.1** Ubah `user-scalable=no` → `user-scalable=yes` di 5 template (admin, guru, siswa, auth, topnav)
+- [ ] **7.2** CSS `.dataTables_wrapper { overflow-x: auto }` — fix tabel admin di mobile tanpa sentuh JS
+- [ ] **7.3** CSS `@media (max-width: 576px)` untuk exam interface (ujian.php)
+- [ ] **7.4** CSS card dan text wrap di mobile
+
+**File target:** 5 template header + `mystyle.css`
+
+---
+
+### Fase 8 — Nice to Have *(Direvisi berdasarkan Audit Fase 9)*
+> Temuan kritis: Login sudah tidak punya panel ganda (no carousel). Notifikasi badge butuh PHP baru.
+
+- [ ] **8.1** Dark mode toggle — CSS var override + localStorage `garudaCBT.theme` + 3 navbar
+- [ ] **8.2** Welcome message personal di dashboard siswa (`$siswa->nama`)
+- [ ] **8.3** Notifikasi badge — buat `Api.php` controller baru (satu-satunya PHP baru dalam proyek ini)
+- [ ] **8.4** ~~Login page carousel~~ → Animasi background SVG halus di login card
+
+---
+
+### Fase 9 — Full Codebase Audit ✅ SELESAI
+*Dokumen lengkap: `fase9_full_audit.md` (brain artifacts)*
+
+Audit menyeluruh seluruh source code — backend, frontend, keamanan, performa.
+
+**Temuan Kritis yang Ditemukan:**
+- [x] **KB-1** Semua controller & model = 7 baris stub obfuscated → kita hanya bisa sentuh Views + Assets
+- [x] **KB-3** `notification.js` menangkap SEMUA form submit via `.preventDefault()` → bug potensial
+- [x] **KB-6** Dual `:root` token di `modern_emerald.css` + `mystyle.css` → technical debt
+- [x] **KP-3** 3 CSS file (select2, icheck) di-load DUA KALI di setiap halaman admin/guru
+- [x] **KF-1** Login sudah modern → Fase 6 direvisi total
+- [x] **KF-2** `user-scalable=no` di 5 template → blokir zoom mobile
+- [x] **KF-3** `table-responsive` tidak bisa dipakai di DataTables (butuh `scrollX` CSS)
+- [x] **F8-3** Notifikasi badge butuh PHP controller baru (Api.php)
+- [x] **F8-4** Login tidak punya carousel — Fase 8.4 direvisi ke animasi SVG
 
 ---
 
@@ -527,9 +555,10 @@ Fase 2 — Dashboard Stats       ██████████ 100%  [✅] SELE
 Fase 3 — Skeleton Loading      ██████████ 100%  [✅] SELESAI — commit faa502cd
 Fase 4 — Empty States          ██████████ 100%  [✅] SELESAI — commit 75c0b5d0
 Fase 5 — Exam Interface        ██████████ 100%  [✅] SELESAI — commit 3066e67f
-Fase 6 — Form Redesign         ░░░░░░░░░░  0%   [ ] Belum dimulai
+Fase 6 — Form Polish           ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 7 — Mobile Optimization   ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 8 — Nice to Have          ░░░░░░░░░░  0%   [ ] Belum dimulai
+Fase 9 — Full Codebase Audit   ██████████ 100%  [✅] SELESAI — audit doc: fase9_full_audit.md
 
 Foundation (Pattern + Spacing) ██████████ 100%  [✅] SELESAI
 ```

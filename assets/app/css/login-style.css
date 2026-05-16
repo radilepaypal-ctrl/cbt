@@ -239,3 +239,156 @@ h2 {
   background-color: #7e0cf5;
   opacity: .2; }
 
+
+/* ==========================================================
+ * CATATAN: Style di atas (.content .bg, .control, dll) adalah
+ * untuk layout login LAMA (dua panel). Sudah tidak aktif.
+ * Disimpan untuk referensi.
+ * ==========================================================
+ *
+ * LOGIN CARD MODERN — Fase 6 Polish
+ * Dipindahkan dari <style> inline di auth/login.php
+ * ========================================================== */
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-card {
+    background: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.10);
+    width: 100%;
+    max-width: 420px;
+    overflow: hidden;
+    animation: loginFadeIn 0.8s ease;
+}
+
+@keyframes loginFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.login-header {
+    background: linear-gradient(135deg, #1cc88a 0%, #13855c 100%);
+    padding: 3.5rem 2rem;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+}
+
+.login-header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.login-header img {
+    width: 90px;
+    height: 90px;
+    border-radius: 20px;
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.login-header h4 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.login-body {
+    padding: 2.5rem;
+}
+
+.form-group-modern {
+    margin-bottom: 1.5rem;
+}
+
+.input-group-modern {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.input-group-modern:focus-within {
+    border-color: #1cc88a;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(28, 200, 138, 0.12);
+}
+
+.input-group-modern .input-icon {
+    padding: 0 1.2rem;
+    color: #94a3b8;
+    transition: color 0.2s ease;
+}
+
+.input-group-modern:focus-within .input-icon {
+    color: #1cc88a;
+}
+
+.input-group-modern input {
+    border: none !important;
+    background: transparent !important;
+    padding: 1.1rem 1rem 1.1rem 0 !important;
+    font-size: 0.95rem;
+    width: 100%;
+    outline: none;
+    color: #2d3748;
+}
+
+.btn-login {
+    background: linear-gradient(135deg, #1cc88a 0%, #13855c 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 1.1rem;
+    width: 100%;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    margin-top: 1rem;
+    box-shadow: 0 10px 20px rgba(28, 200, 138, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(28, 200, 138, 0.4);
+}
+
+.btn-login:disabled {
+    opacity: 0.7;
+    transform: none;
+    cursor: not-allowed;
+}
+
+.icheck-primary label {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
