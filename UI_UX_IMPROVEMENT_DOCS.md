@@ -341,13 +341,36 @@ Layer 5: linear-gradient 135° → base emerald #23d18b → #0f7a52
 
 ---
 
-### Fase 8 — Nice to Have *(Direvisi berdasarkan Audit Fase 9)*
-> Temuan kritis: Login sudah tidak punya panel ganda (no carousel). Notifikasi badge butuh PHP baru.
+### Fase 8 — Nice to Have ✅ SELESAI
+*Commit: `73acb240`*
+> Direvisi berdasarkan Audit Fase 9: login tidak punya carousel, notifikasi butuh PHP baru.
 
-- [ ] **8.1** Dark mode toggle — CSS var override + localStorage `garudaCBT.theme` + 3 navbar
-- [ ] **8.2** Welcome message personal di dashboard siswa (`$siswa->nama`)
-- [ ] **8.3** Notifikasi badge — buat `Api.php` controller baru (satu-satunya PHP baru dalam proyek ini)
-- [ ] **8.4** ~~Login page carousel~~ → Animasi background SVG halus di login card
+- [x] **8.1** Dark mode toggle
+  - `dark-mode.js`: toggle class `dark-mode` via `localStorage['garudaCBT.theme']`
+  - CSS: 250+ baris override — card, table, form, select2, navbar, sidebar, modal, SweetAlert2
+  - Toggle icon: `fa-moon` ↔ `fa-sun` + rotate animation
+  - Tombol toggle di **3 navbar**: admin, guru, siswa
+- [x] **8.2** Welcome message personal di dashboard siswa
+  - Greeting otomatis: ☀️ Pagi / 🌤️ Siang / 🌅 Sore / 🌙 Malam sesuai jam
+  - Avatar circular + border putih + hover effect
+  - Info NIS + nama kelas dengan ikon
+- [x] **8.3** Notifikasi badge ujian hari ini
+  - `Api.php` controller baru (PHP readable pertama dalam proyek)
+  - `GET /api/badge_ujian`: query CI DB Builder langsung, auth via ion_auth
+  - Badge `fa-clipboard-list` di siswa navbar, async fetch, graceful fail
+- [x] **8.4** ~~Login carousel~~ → Animasi background SVG floating halus
+  - `@keyframes loginFloat`: circle ornamen di login-header
+  - `@keyframes loginLogoFloat`: logo avatar floating
+  - `@keyframes loginBgDrift`: radial gradient drift di balik card
+
+**Files Changed:**
+- `assets/app/css/mystyle.css` — +250 baris (8.1 dark mode + 8.4 animation)
+- `assets/app/js/dark-mode.js` — file baru
+- `application/controllers/Api.php` — controller baru
+- `application/views/members/siswa/templates/top.php` — welcome greeting
+- `application/views/members/siswa/templates/navbar.php` — badge + dark toggle
+- `application/views/members/guru/templates/navbar.php` — dark toggle
+- `application/views/_templates/dashboard/navbar.php` — dark toggle
 
 ---
 
@@ -570,7 +593,7 @@ Fase 4 — Empty States          ██████████ 100%  [✅] SELE
 Fase 5 — Exam Interface        ██████████ 100%  [✅] SELESAI — commit 3066e67f
 Fase 6 — Form Polish           ██████████ 100%  [✅] SELESAI — commit 5c46f621
 Fase 7 — Mobile Optimization   ██████████ 100%  [✅] SELESAI — commit 8a673d57
-Fase 8 — Nice to Have          ░░░░░░░░░░  0%   [ ] Belum dimulai
+Fase 8 — Nice to Have          ██████████ 100%  [✅] SELESAI — commit 73acb240
 Fase 9 — Full Codebase Audit   ██████████ 100%  [✅] SELESAI — audit doc: fase9_full_audit.md
 
 Foundation (Pattern + Spacing) ██████████ 100%  [✅] SELESAI
