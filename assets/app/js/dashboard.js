@@ -273,7 +273,12 @@ function addPosts(response) {
                 '            <div class="spinner-grow"></div>' +
                 '        </div>';
             if (v.jml=='0'){
-                card += '<div class="text-center" id="empty-comment">Tidak ada komentar</div>';
+                card += '<div class="empty-state empty-state--sm" id="empty-comment">' +
+                    '<div class="empty-state__icon empty-state__icon--muted" style="width:40px;height:40px;font-size:1.1rem;margin-bottom:0.5rem">' +
+                    '    <i class="fas fa-comments"></i>' +
+                    '</div>' +
+                    '<p class="empty-state__desc" style="font-size:0.78rem">Belum ada komentar. Jadilah yang pertama!</p>' +
+                    '</div>';
             } else {
                 card += '<div id="loadmore'+v.id_post+'"' +
                     '     onclick="getComments('+v.id_post+')"' +
@@ -285,10 +290,13 @@ function addPosts(response) {
                 '</div>';
         });
     } else {
-        card = '<div class="card card-default">' +
-            '<div class="card-body">' +
-            ' <p>Tidak ada pengumuman</p>' +
-            '</div></div>';
+        card = '<div class="empty-state">' +
+            '<div class="empty-state__icon empty-state__icon--muted">' +
+            '    <i class="fas fa-bullhorn"></i>' +
+            '</div>' +
+            '<p class="empty-state__title">Belum Ada Pengumuman</p>' +
+            '<p class="empty-state__desc">Belum ada informasi atau pengumuman yang diposting. Silakan cek kembali nanti.</p>' +
+            '</div>';
     }
 
     $('#pengumuman').html(card);

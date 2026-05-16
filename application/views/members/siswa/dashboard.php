@@ -124,14 +124,21 @@
                                         </table>
                                     </div>
                                 <?php else: ?>
-                                    <p>
-                                        Tidak ada jadwal hari ini
-                                    </p>
+                                    <div class="empty-state empty-state--sm">
+                                        <div class="empty-state__icon empty-state__icon--info">
+                                            <i class="fas fa-calendar-times"></i>
+                                        </div>
+                                        <p class="empty-state__title">Tidak Ada Jadwal Hari Ini</p>
+                                        <p class="empty-state__desc">Tidak ada pelajaran terjadwal hari ini.</p>
+                                    </div>
                                 <?php endif; ?>
                             <?php else: ?>
-                                <p>
-                                    Jadwal untuk kelas <?= $siswa->nama_kelas ?> belum dibuat
-                                </p>
+                                <div class="empty-state empty-state--sm">
+                                    <div class="empty-state__icon empty-state__icon--muted">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <p class="empty-state__desc">Jadwal untuk kelas <?= $siswa->nama_kelas ?> belum dibuat.</p>
+                                </div>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -543,7 +550,12 @@
                 '            <div class="spinner-grow"></div>' +
                 '        </div>';
             if (v.jml == '0') {
-                card += '<div class="text-center">Tidak ada komentar</div>';
+                card += '<div class="empty-state empty-state--sm" id="empty-comment">' +
+                    '<div class="empty-state__icon empty-state__icon--muted" style="width:40px;height:40px;font-size:1.1rem;margin-bottom:0.5rem">' +
+                    '    <i class="fas fa-comments"></i>' +
+                    '</div>' +
+                    '<p class="empty-state__desc" style="font-size:0.78rem">Belum ada komentar. Jadilah yang pertama!</p>' +
+                    '</div>';
             } else {
                 card += '<div id="loadmore' + v.id_post + '"' +
                     '     onclick="getComments(' + v.id_post + ')"' +
@@ -736,7 +748,15 @@
                     tableJadwal += '</tbody></table>';
                     $('#list-jadwal').html(tableJadwal);
                 } else {
-                    $('#list-jadwal').html('Tidak ada jadwal hari ini');
+                    $('#list-jadwal').html(
+                        '<div class="empty-state empty-state--sm">' +
+                        '    <div class="empty-state__icon empty-state__icon--info">' +
+                        '        <i class="fas fa-calendar-times"></i>' +
+                        '    </div>' +
+                        '    <p class="empty-state__title">Tidak Ada Jadwal Hari Ini</p>' +
+                        '    <p class="empty-state__desc">Tidak ada pelajaran terjadwal hari ini.</p>' +
+                        '</div>'
+                    );
                 }
             }
         })

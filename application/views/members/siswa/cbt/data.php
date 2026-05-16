@@ -41,8 +41,12 @@ $jadwal_selesai = [];
                                     //var_dump(strtotime($durasiMulai->format('H:i')));
                                     //echo '</pre>';
                                     if ($cbt_info == null) : ?>
-                                        <div class="alert alert-default-warning">
-                                            <div class="text-center">Tidak ada jadwal penilaian</div>
+                                        <div class="empty-state">
+                                            <div class="empty-state__icon empty-state__icon--warning">
+                                                <i class="fas fa-clipboard-list"></i>
+                                            </div>
+                                            <p class="empty-state__title">Tidak Ada Jadwal Penilaian</p>
+                                            <p class="empty-state__desc">Belum ada ujian atau ulangan yang dijadwalkan untuk Anda saat ini.</p>
                                         </div>
                                     <?php else: ?>
                                         <div class="card border">
@@ -107,9 +111,14 @@ $jadwal_selesai = [];
                             <div class="row" id="jadwal-content">
                                 <?php
                                 if ($cbt_info == null || count($cbt_setting) > 0) : ?>
-                                    <div class="col-12 alert alert-default-warning">
-                                        <div class="text-center">Tidak ada jadwal penilaian.<b>Tidak bisa mengerjakan
-                                                ulangan/ujian.<br>Hubungi Proktor/Admin</div>
+                                    <div class="col-12">
+                                        <div class="empty-state">
+                                            <div class="empty-state__icon empty-state__icon--warning">
+                                                <i class="fas fa-ban"></i>
+                                            </div>
+                                            <p class="empty-state__title">Tidak Bisa Mengerjakan Ujian</p>
+                                            <p class="empty-state__desc">Tidak ada jadwal penilaian aktif.<br>Silakan hubungi <strong>Proktor / Admin</strong> untuk informasi lebih lanjut.</p>
+                                        </div>
                                     </div>
                                 <?php else:
                                     $jamSesi = $cbt_info == null ? '0' : (isset($cbt_info->sesi_id) ? $cbt_info->sesi_id : $cbt_info->id_sesi);
@@ -252,8 +261,14 @@ $jadwal_selesai = [];
                                         <?php
                                         endforeach;
                                     else: ?>
-                                        <div class="col-12 alert alert-default-warning">
-                                            <div class="text-center">Tidak ada jadwal penilaian hari ini.</div>
+                                        <div class="col-12">
+                                            <div class="empty-state">
+                                                <div class="empty-state__icon empty-state__icon--info">
+                                                    <i class="fas fa-calendar-day"></i>
+                                                </div>
+                                                <p class="empty-state__title">Tidak Ada Jadwal Hari Ini</p>
+                                                <p class="empty-state__desc">Tidak ada ujian atau penilaian yang dijadwalkan hari ini untuk Anda.</p>
+                                            </div>
                                         </div>
                                     <?php
                                     endif;

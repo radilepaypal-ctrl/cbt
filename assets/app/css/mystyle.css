@@ -645,3 +645,104 @@ input, select, textarea, .custom-select {
     pointer-events: none;
 }
 
+/* ==========================================================
+ * FASE 4 — Empty States
+ * Tampilan informatif saat tidak ada data, menggantikan
+ * teks polos "Tidak ada..." dengan ilustrasi + pesan jelas.
+ * Ref: UI_UX_IMPROVEMENT_DOCS.md - Phase 4 ✅
+ * ========================================================== */
+
+/* ----------------------------------------------------------
+ * 4.4 — Base Empty State Component
+ * Gunakan class .empty-state sebagai wrapper utama.
+ * Terapkan modifier: .empty-state--sm (compact)
+ * ---------------------------------------------------------- */
+@keyframes empty-float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    min-height: 160px;
+}
+
+.empty-state__icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.1rem;
+    font-size: 1.8rem;
+    animation: empty-float 3.5s ease-in-out infinite;
+    /* Default: emerald subtle */
+    background: linear-gradient(135deg, #e8f8f2 0%, #d4f0e6 100%);
+    color: var(--primary-soft);
+    box-shadow: 0 4px 18px rgba(28, 200, 138, 0.12);
+}
+
+/* Varian warna icon */
+.empty-state__icon--warning {
+    background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+    color: #f59e0b;
+    box-shadow: 0 4px 18px rgba(245, 158, 11, 0.12);
+}
+
+.empty-state__icon--info {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    color: #3b82f6;
+    box-shadow: 0 4px 18px rgba(59, 130, 246, 0.12);
+}
+
+.empty-state__icon--muted {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    color: #94a3b8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.empty-state__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 0 0 0.35rem 0;
+    line-height: 1.4;
+}
+
+.empty-state__desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0;
+    max-width: 280px;
+    line-height: 1.6;
+}
+
+/* Compact variant — untuk area kecil (inline di card kecil) */
+.empty-state--sm {
+    padding: 1.5rem 1rem;
+    min-height: 100px;
+}
+
+.empty-state--sm .empty-state__icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.empty-state--sm .empty-state__title {
+    font-size: 0.88rem;
+}
+
+.empty-state--sm .empty-state__desc {
+    font-size: 0.78rem;
+}
+
+

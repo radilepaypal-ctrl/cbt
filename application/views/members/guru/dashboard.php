@@ -121,8 +121,11 @@
                                                             </table>
                                                         </div>
                                                     <?php else: ?>
-                                                        <div class="m-4">
-                                                            Jadwal untuk kelas <?= $kelas ?> belum dibuat
+                                                        <div class="empty-state empty-state--sm">
+                                                            <div class="empty-state__icon empty-state__icon--muted">
+                                                                <i class="fas fa-calendar-alt"></i>
+                                                            </div>
+                                                            <p class="empty-state__desc">Jadwal untuk kelas <?= $kelas ?> belum dibuat.</p>
                                                         </div>
                                                     <?php endif; ?>
                                                 </div>
@@ -132,8 +135,12 @@
                                 <?php
                                 else:
                                     ?>
-                                    <div class="card-body">
-                                        Tidak ada jadwal hari ini
+                                    <div class="empty-state empty-state--sm">
+                                        <div class="empty-state__icon empty-state__icon--info">
+                                            <i class="fas fa-calendar-times"></i>
+                                        </div>
+                                        <p class="empty-state__title">Tidak Ada Jadwal Hari Ini</p>
+                                        <p class="empty-state__desc">Tidak ada jadwal pelajaran yang terdaftar untuk hari ini.</p>
                                     </div>
                                 <?php
                                 endif;
@@ -242,11 +249,13 @@
                                                 $no++; endforeach;?>
                                         </table>
                                     <?php else: ?>
-                                        <table class="w-100 table-bordered">
-                                            <tr>
-                                                <td class="text-center">Tidak ada jadwal penilaian</td>
-                                            </tr>
-                                        </table>
+                                        <div class="empty-state empty-state--sm">
+                                            <div class="empty-state__icon empty-state__icon--warning">
+                                                <i class="fas fa-clipboard-list"></i>
+                                            </div>
+                                            <p class="empty-state__title">Belum Ada Jadwal Penilaian</p>
+                                            <p class="empty-state__desc">Tidak ada ujian atau penilaian yang dijadwalkan saat ini.</p>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
                             </div>
