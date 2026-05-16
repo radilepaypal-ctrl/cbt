@@ -102,6 +102,9 @@
 <!-- Fase 2: Stats Animation (count-up, stagger, pulse) -->
 <script src="<?= base_url() ?>/assets/app/js/stats-animation.js"></script>
 
+<!-- Fase 3: Skeleton Loading (log-list, pengumuman, jadwal) -->
+<script src="<?= base_url() ?>/assets/app/js/skeleton-loading.js"></script>
+
 <!-- Custom JS -->
 <script type="text/javascript">
     $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
