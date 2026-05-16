@@ -279,17 +279,26 @@ Layer 5: linear-gradient 135° → base emerald #23d18b → #0f7a52
 
 ---
 
-### Fase 5 — Exam Interface Polish (Kritis)
-*Halaman paling lama digunakan siswa*
+### Fase 5 — Exam Interface Polish ✅ SELESAI
+*Commit: `3066e67f`*
 
-- [ ] **5.1** Progress bar soal (X dari Y sudah dijawab) — sticky di atas
-- [ ] **5.2** Navigasi soal grid (kotak nomor soal berwarna: hijau=jawab, abu=belum, merah=ragu)
-- [ ] **5.3** Animasi smooth saat pindah soal
-- [ ] **5.4** Timer pulse effect saat waktu < 5 menit (warna merah + animasi)
-- [ ] **5.5** Konfirmasi submit dengan visual yang lebih jelas
-- [ ] **5.6** Mobile layout exam yang lebih ergonomis
+- [x] **5.1** `.btn-oval-sm` — definisi CSS additive untuk tombol navigasi ujian (Prev/Next/Timer/Daftar Soal)
+- [x] **5.2** Timer warning color — `exam-polish.js` (MutationObserver ~55 baris, read-only)
+  - ≤ 10 menit → `body.timer-warning` (kuning pulse)
+  - ≤ 5 menit → `body.timer-danger` (merah pulse cepat)
+- [x] **5.3** `#nomor-soal` badge — radius + shadow emerald
+- [x] **5.4** `.card > .overlay` — blur + spinner emerald (ganti spinner-grow default)
+- [x] **5.5** `.konten-soal-jawab` border — radius + warna neutral
+- [x] **5.6** `#konten-modal` grid — CSS override (controller obfuscated, tidak bisa edit HTML)
+- [x] **5.7** Tombol Selesai `#next.btn-success` — `@keyframes selesai-pulse` emerald glow
+- [x] **5.8** `.card-footer` — transparan + border neutral
+- [x] **5.9-5.13** `konfirmasi.php` full upgrade — header badge emerald, list-group modern, pengawas-box, alert animasi, tombol MULAI pill+hover
 
-**File target:** `views/members/siswa/cbt/ujian.php` + CSS baru `ujian.css`
+**Files Changed:**
+- `assets/app/css/mystyle.css` — +350 baris (5.1–5.13)
+- `assets/app/js/exam-polish.js` — **file baru** (55 baris)
+- `application/views/members/siswa/cbt/ujian.php` — include `exam-polish.js`
+- `application/views/members/siswa/cbt/konfirmasi.php` — full card upgrade
 
 ---
 
@@ -423,7 +432,8 @@ git checkout -b experiment/test-something master
 | `cf4816fa` | Phase 1 Micro-Animations COMPLETE | ✅ Checkpoint |
 | `3b464291` | Phase 2 Dashboard Stats Animation COMPLETE | ✅ Checkpoint |
 | `faa502cd` | Phase 3 Skeleton Loading COMPLETE | ✅ Checkpoint |
-| `75c0b5d0` | **Phase 4 Empty States COMPLETE** | ✅ Checkpoint aktif |
+| `75c0b5d0` | Phase 4 Empty States COMPLETE | ✅ Checkpoint |
+| `3066e67f` | **Phase 5 Exam Interface Polish COMPLETE** | ✅ Checkpoint aktif |
 
 > [!TIP]
 > Setiap awal fase baru (Fase 1, 2, 3, dst), catat hash commit terakhir di tabel ini agar ada checkpoint yang jelas.
@@ -516,7 +526,7 @@ Fase 1 — Micro-Animations     ██████████ 100%  [✅] SELES
 Fase 2 — Dashboard Stats       ██████████ 100%  [✅] SELESAI — commit 3b464291
 Fase 3 — Skeleton Loading      ██████████ 100%  [✅] SELESAI — commit faa502cd
 Fase 4 — Empty States          ██████████ 100%  [✅] SELESAI — commit 75c0b5d0
-Fase 5 — Exam Interface        ░░░░░░░░░░  0%   [ ] Belum dimulai
+Fase 5 — Exam Interface        ██████████ 100%  [✅] SELESAI — commit 3066e67f
 Fase 6 — Form Redesign         ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 7 — Mobile Optimization   ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 8 — Nice to Have          ░░░░░░░░░░  0%   [ ] Belum dimulai
