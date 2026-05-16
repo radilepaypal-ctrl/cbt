@@ -261,15 +261,21 @@ Layer 5: linear-gradient 135° → base emerald #23d18b → #0f7a52
 
 ---
 
-### Fase 4 — Empty States
-*Tampilan saat tidak ada data*
+### Fase 4 — Empty States ✅ SELESAI
+*Commit: `75c0b5d0`*
 
-- [ ] **4.1** Empty state pengumuman (icon + teks informatif)
-- [ ] **4.2** Empty state jadwal hari ini
-- [ ] **4.3** Empty state daftar ujian siswa
-- [ ] **4.4** CSS class `.empty-state` global
+- [x] **4.1** Empty state pengumuman — `addPosts()` empty response + komentar kosong (admin & siswa)
+- [x] **4.2** Empty state jadwal hari ini — PHP server-side (admin, guru, siswa) + `loadJadwal()` AJAX (siswa)
+- [x] **4.3** Empty state daftar ujian siswa — 3 kondisi di `cbt/data.php`: tidak ada jadwal, tidak bisa mengerjakan, tidak ada hari ini
+- [x] **4.4** CSS global `.empty-state` + `.empty-state--sm` — floating icon animation, 3 varian warna (warning, info, muted/emerald)
 
-**File target:** view files siswa + `mystyle.css`
+**Files Changed:**
+- `assets/app/css/mystyle.css` — +105 baris: base `.empty-state`, variants, `@keyframes empty-float`
+- `assets/app/js/dashboard.js` — Upgrade `addPosts()` empty + komentar kosong
+- `application/views/dashboard.php` — 2 lokasi (jadwal hari ini, jadwal penilaian)
+- `application/views/members/guru/dashboard.php` — 3 lokasi (jadwal kelas, hari ini, penilaian)
+- `application/views/members/siswa/dashboard.php` — 4 lokasi (jadwal, loadJadwal AJAX, komentar)
+- `application/views/members/siswa/cbt/data.php` — 3 lokasi (tidak ada jadwal, tidak bisa mengerjakan, tidak ada hari ini)
 
 ---
 
@@ -416,7 +422,8 @@ git checkout -b experiment/test-something master
 | `9939e15e` | Foundation semua fase done | ✅ Checkpoint 5 |
 | `cf4816fa` | Phase 1 Micro-Animations COMPLETE | ✅ Checkpoint |
 | `3b464291` | Phase 2 Dashboard Stats Animation COMPLETE | ✅ Checkpoint |
-| `faa502cd` | **Phase 3 Skeleton Loading COMPLETE** | ✅ Checkpoint aktif |
+| `faa502cd` | Phase 3 Skeleton Loading COMPLETE | ✅ Checkpoint |
+| `75c0b5d0` | **Phase 4 Empty States COMPLETE** | ✅ Checkpoint aktif |
 
 > [!TIP]
 > Setiap awal fase baru (Fase 1, 2, 3, dst), catat hash commit terakhir di tabel ini agar ada checkpoint yang jelas.
@@ -508,7 +515,7 @@ background-size: 22px 22px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
 Fase 1 — Micro-Animations     ██████████ 100%  [✅] SELESAI — commit cf4816fa
 Fase 2 — Dashboard Stats       ██████████ 100%  [✅] SELESAI — commit 3b464291
 Fase 3 — Skeleton Loading      ██████████ 100%  [✅] SELESAI — commit faa502cd
-Fase 4 — Empty States          ░░░░░░░░░░  0%   [ ] Belum dimulai
+Fase 4 — Empty States          ██████████ 100%  [✅] SELESAI — commit 75c0b5d0
 Fase 5 — Exam Interface        ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 6 — Form Redesign         ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 7 — Mobile Optimization   ░░░░░░░░░░  0%   [ ] Belum dimulai
