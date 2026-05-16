@@ -1183,3 +1183,191 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     opacity: 0.5;
 }
+
+/* ==========================================================
+ * FASE 7 — Mobile Optimization
+ * Perbaikan aksesibilitas dan layout di layar kecil.
+ * Berdasarkan Audit Fase 9: temuan KF-2, KF-3, KF-4.
+ * Ref: UI_UX_IMPROVEMENT_DOCS.md - Phase 7 ✅
+ * ========================================================== */
+
+/* ----------------------------------------------------------
+ * 7.1 — DataTables: horizontal scroll tanpa menyentuh JS
+ *        Solusi aman: CSS overflow pada wrapper, bukan
+ *        menambahkan div.table-responsive ke HTML.
+ *        (Fase 9 audit: menambah wrapper HTML akan rusak DT)
+ * ---------------------------------------------------------- */
+.dataTables_wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Pastikan tabel di dalam DT tetap bisa scroll */
+.dataTables_wrapper table.dataTable {
+    min-width: 500px;
+}
+
+/* ----------------------------------------------------------
+ * 7.2 — Tabel umum non-DataTables: scroll wrapper via CSS
+ * ---------------------------------------------------------- */
+.table-responsive-auto {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ----------------------------------------------------------
+ * 7.3 — @media mobile: penyesuaian layout global
+ * ---------------------------------------------------------- */
+@media (max-width: 576px) {
+
+    /* Card: kurangi padding agar konten tidak sesak */
+    .card-body {
+        padding: 1rem !important;
+    }
+
+    .card-header {
+        padding: 0.75rem 1rem !important;
+    }
+
+    .card-footer {
+        padding: 0.75rem 1rem !important;
+    }
+
+    /* Judul h1 di content-header terlalu besar di mobile */
+    .content-header h1 {
+        font-size: 1.2rem !important;
+    }
+
+    /* Button row — wrap ke bawah jika terlalu banyak */
+    .card-tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    /* DataTables filter + info: stack vertikal */
+    .dataTables_filter,
+    .dataTables_length {
+        text-align: left !important;
+        margin-bottom: 0.5rem;
+    }
+
+    /* DataTables info + paginate: full width */
+    .dataTables_info,
+    .dataTables_paginate {
+        text-align: center !important;
+        float: none !important;
+        width: 100%;
+    }
+
+    /* Pagination tombol lebih kecil di mobile */
+    .dataTables_paginate .paginate_button {
+        padding: 0.2rem 0.5rem !important;
+        font-size: 0.78rem !important;
+    }
+}
+
+/* ----------------------------------------------------------
+ * 7.4 — @media mobile: Exam Interface (ujian.php)
+ *        Berdasarkan audit: card-header berdesakan di mobile
+ * ---------------------------------------------------------- */
+@media (max-width: 576px) {
+
+    /* Header soal: tombol navigasi stack */
+    .card-header .d-flex {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    /* Tombol oval lebih kecil di mobile */
+    .btn-oval-sm {
+        padding: 0.3rem 0.9rem !important;
+        font-size: 0.78rem !important;
+    }
+
+    /* Timer chip: lebih compact */
+    #timer {
+        font-size: 0.9rem !important;
+    }
+
+    /* Area soal: kurangi padding */
+    .konten-soal-jawab {
+        padding: 0.5rem !important;
+    }
+
+    /* Modal daftar soal: grid lebih kecil */
+    #konten-modal .btn-outline-secondary,
+    #konten-modal .btn-primary {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* Konfirmasi ujian: kompak */
+    .konfirmasi-header {
+        padding: 1rem 0.75rem 0.75rem !important;
+    }
+
+    .konfirmasi-header h3 {
+        font-size: 1.1rem !important;
+    }
+
+    .pengawas-box {
+        padding: 0.75rem 1rem !important;
+    }
+}
+
+/* ----------------------------------------------------------
+ * 7.5 — @media tablet (576-768px): penyesuaian ringan
+ * ---------------------------------------------------------- */
+@media (min-width: 577px) and (max-width: 768px) {
+
+    .card-body {
+        padding: 1.25rem !important;
+    }
+
+    .dataTables_filter,
+    .dataTables_length {
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* ----------------------------------------------------------
+ * 7.6 — Touch target: semua tombol min 44px (WCAG 2.5.5)
+ *        Berlaku hanya di layar sentuh (mobile/tablet)
+ * ---------------------------------------------------------- */
+@media (max-width: 768px) {
+
+    /* Tombol utama */
+    .btn:not(.btn-xs):not(.btn-oval-sm) {
+        min-height: 40px;
+    }
+
+    /* Navbar items lebih mudah disentuh */
+    .nav-link {
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
+    }
+
+    /* Sidebar menu items */
+    .nav-sidebar .nav-link {
+        padding: 0.5rem 1rem !important;
+    }
+
+    /* DataTables row: lebih tinggi untuk touch */
+    .dataTable tbody tr td {
+        padding: 0.6rem 0.5rem !important;
+    }
+}
+
+/* ----------------------------------------------------------
+ * 7.7 — Content wrapper: hindari overflow horizontal global
+ * ---------------------------------------------------------- */
+.content-wrapper {
+    overflow-x: hidden;
+}
+
+/* Section content tidak meluber */
+.content {
+    max-width: 100%;
+}
