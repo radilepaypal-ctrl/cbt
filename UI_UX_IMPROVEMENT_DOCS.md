@@ -302,17 +302,22 @@ Layer 5: linear-gradient 135° → base emerald #23d18b → #0f7a52
 
 ---
 
-### Fase 6 — Form & Input Polish *(Direvisi berdasarkan Audit Fase 9)*
-> Scope asli direvisi: login page sudah modern (CSS inline), floating label & password toggle sudah ada.
-> Fokus ke cleanup, konsistensi CSS, dan focus ring global.
+### Fase 6 — Form & Input Polish ✅ SELESAI
+*Commit: `5c46f621`*
+> Scope asli direvisi berdasarkan Audit Fase 9: login page sudah modern.
 
-- [ ] **6.1** Hapus 6 baris CSS duplikat di `_header.php` (select2, icheck di-load 2x)
-- [ ] **6.2** Hapus `login-main.js` dari auth footer (dead code sejak login dimodernisasi)
-- [ ] **6.3** Pindahkan CSS inline login ke `login-style.css` (refactor tanpa perubahan tampilan)
-- [ ] **6.4** Focus ring emerald global — `.form-control:focus` + `.select2-container--open`
-- [ ] **6.5** Label polish global — uppercase, weight, spacing konsisten
+- [x] **6.1** Hapus 3 CSS duplikat di `_header.php` (icheck + select2 di-load 2x) — -3 HTTP request
+- [x] **6.2** Hapus `login-main.js` — tidak di-load (sudah terkonfirmasi dari audit)
+- [x] **6.3** Pindahkan 147 baris CSS inline login ke `login-style.css` (refactor bersih)
+- [x] **6.4** Focus ring emerald global — `.form-control:focus` + `.select2-container--open`
+- [x] **6.5** Label polish global — uppercase, weight 600, muted, dengan pengecualian `.icheck-primary`
 
-**File target:** `_templates/dashboard/_header.php`, `_templates/auth/_footer.php`, `login-style.css`, `mystyle.css`
+**Files Changed:**
+- `assets/app/css/mystyle.css` — +90 baris (6.1–6.5)
+- `assets/app/css/login-style.css` — CSS login card modern
+- `application/views/auth/login.php` — hapus 147 baris inline `<style>`
+- `application/views/_templates/auth/_header.php` — include `login-style.css`
+- `application/views/_templates/dashboard/_header.php` — hapus CSS duplikat
 
 ---
 
@@ -555,7 +560,7 @@ Fase 2 — Dashboard Stats       ██████████ 100%  [✅] SELE
 Fase 3 — Skeleton Loading      ██████████ 100%  [✅] SELESAI — commit faa502cd
 Fase 4 — Empty States          ██████████ 100%  [✅] SELESAI — commit 75c0b5d0
 Fase 5 — Exam Interface        ██████████ 100%  [✅] SELESAI — commit 3066e67f
-Fase 6 — Form Polish           ░░░░░░░░░░  0%   [ ] Belum dimulai
+Fase 6 — Form Polish           ██████████ 100%  [✅] SELESAI — commit 5c46f621
 Fase 7 — Mobile Optimization   ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 8 — Nice to Have          ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 9 — Full Codebase Audit   ██████████ 100%  [✅] SELESAI — audit doc: fase9_full_audit.md
