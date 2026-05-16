@@ -321,13 +321,21 @@ Layer 5: linear-gradient 135° → base emerald #23d18b → #0f7a52
 
 ---
 
-### Fase 7 — Mobile Optimization *(Direvisi berdasarkan Audit Fase 9)*
-> Temuan kritis: `user-scalable=no` aktif di 5 template, DataTables tidak bisa dibungkus HTML.
+### Fase 7 — Mobile Optimization ✅ SELESAI
+*Commit: `8a673d57`*
+> Berdasarkan Audit Fase 9: `user-scalable=no` di 5 template, DataTables tidak bisa dibungkus HTML.
 
-- [ ] **7.1** Ubah `user-scalable=no` → `user-scalable=yes` di 5 template (admin, guru, siswa, auth, topnav)
-- [ ] **7.2** CSS `.dataTables_wrapper { overflow-x: auto }` — fix tabel admin di mobile tanpa sentuh JS
-- [ ] **7.3** CSS `@media (max-width: 576px)` untuk exam interface (ujian.php)
-- [ ] **7.4** CSS card dan text wrap di mobile
+- [x] **7.1** Ubah `user-scalable=no` → `user-scalable=yes, maximum-scale=5` di **5 template** (admin, guru, siswa, auth, topnav) — zoom pinch kini diizinkan
+- [x] **7.2** CSS `.dataTables_wrapper { overflow-x: auto }` — fix tabel di mobile tanpa sentuh JS init
+- [x] **7.3** CSS `@media (max-width: 576px)` — card padding, DataTables stack, card-tools wrap
+- [x] **7.4** CSS `@media (max-width: 576px)` exam interface — `.btn-oval-sm`, `#timer`, modal grid, konfirmasi kompak
+- [x] **7.5** CSS tablet (577-768px) penyesuaian ringan
+- [x] **7.6** Touch target min 40px di semua tombol layar ≤ 768px (WCAG 2.5.5)
+- [x] **7.7** `.content-wrapper { overflow-x: hidden }` — global overflow guard
+
+**Files Changed:**
+- 5 template header — viewport meta diperbarui
+- `assets/app/css/mystyle.css` — +175 baris (7.1–7.7)
 
 **File target:** 5 template header + `mystyle.css`
 
@@ -561,7 +569,7 @@ Fase 3 — Skeleton Loading      ██████████ 100%  [✅] SELE
 Fase 4 — Empty States          ██████████ 100%  [✅] SELESAI — commit 75c0b5d0
 Fase 5 — Exam Interface        ██████████ 100%  [✅] SELESAI — commit 3066e67f
 Fase 6 — Form Polish           ██████████ 100%  [✅] SELESAI — commit 5c46f621
-Fase 7 — Mobile Optimization   ░░░░░░░░░░  0%   [ ] Belum dimulai
+Fase 7 — Mobile Optimization   ██████████ 100%  [✅] SELESAI — commit 8a673d57
 Fase 8 — Nice to Have          ░░░░░░░░░░  0%   [ ] Belum dimulai
 Fase 9 — Full Codebase Audit   ██████████ 100%  [✅] SELESAI — audit doc: fase9_full_audit.md
 
