@@ -90,6 +90,11 @@
 <!-- App JS -->
 <script src="<?= base_url() ?>/assets/app/js/show.toast.js"></script>
 <script src="<?= base_url() ?>/assets/app/js/dashboard_guru.js"></script>
+<!-- Fase 3: Skeleton Loading (log-list, pengumuman, jadwal) -->
+<script src="<?= base_url() ?>/assets/app/js/skeleton-loading.js"></script>
+
+<!-- Fase 10: Global AJAX Loader -->
+<script src="<?= base_url() ?>/assets/app/js/global-loader.js"></script>
 
 <!-- Custom JS -->
 <script type="text/javascript">

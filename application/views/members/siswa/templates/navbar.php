@@ -4,7 +4,7 @@
             <?php
             $page = $this->uri->segment(1);
             if ($page !== 'dashboard') : ?>
-                <a class="nav-link" href="javascript:history.back()" role="button"><i class="fas fa-arrow-left"></i></a>
+                <a class="nav-link" href="javascript:history.back()" role="button" aria-label="Kembali ke halaman sebelumnya"><i class="fas fa-arrow-left" aria-hidden="true"></i></a>
             <?php endif; ?>
         </li>
     </ul>
@@ -19,15 +19,15 @@
     <ul class="navbar-nav ml-auto mr-2">
         <!-- Badge notifikasi ujian aktif hari ini -->
         <li class="nav-item">
-            <a href="<?= base_url('siswa/cbt') ?>" class="nav-link" id="ujian-badge-btn" title="Ujian Hari Ini">
-                <i class="fas fa-clipboard-list"></i>
+            <a href="<?= base_url('siswa/cbt') ?>" class="nav-link" id="ujian-badge-btn" title="Ujian Hari Ini" aria-label="Daftar ujian hari ini">
+                <i class="fas fa-clipboard-list" aria-hidden="true"></i>
                 <span class="badge badge-danger navbar-badge d-none" id="ujian-badge-count">0</span>
             </a>
         </li>
         <!-- Dark mode toggle -->
         <li class="nav-item">
-            <a href="#" class="nav-link btn-theme-toggle" title="Mode Gelap">
-                <i class="fas fa-moon theme-toggle-icon"></i>
+            <a href="#" class="nav-link btn-theme-toggle" title="Mode Gelap" role="button" aria-label="Toggle mode gelap">
+                <i class="fas fa-moon theme-toggle-icon" aria-hidden="true"></i>
             </a>
         </li>
     </ul>

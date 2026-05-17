@@ -97,6 +97,12 @@
 
 <script src="<?= base_url() ?>/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 
+<!-- Fase 3: Skeleton Loading (log-list, pengumuman, jadwal) -->
+<script src="<?= base_url() ?>/assets/app/js/skeleton-loading.js"></script>
+
+<!-- Fase 10: Global AJAX Loader -->
+<script src="<?= base_url() ?>/assets/app/js/global-loader.js"></script>
+
 <!-- Custom JS -->
 <script type="text/javascript">
     $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {

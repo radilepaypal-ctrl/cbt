@@ -3,7 +3,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button" aria-label="Toggle navigation menu"><i class="fas fa-bars" aria-hidden="true"></i></a>
         </li>
 
         <li class="nav-item">
@@ -213,8 +213,8 @@
         </li>
         <!-- Dark Mode Toggle -->
         <li class="nav-item">
-            <a href="#" class="nav-link btn-theme-toggle" id="theme-toggle" title="Mode Gelap">
-                <i class="fas fa-moon theme-toggle-icon"></i>
+            <a href="#" class="nav-link btn-theme-toggle" id="theme-toggle" title="Mode Gelap" role="button" aria-label="Toggle mode gelap">
+                <i class="fas fa-moon theme-toggle-icon" aria-hidden="true"></i>
             </a>
         </li>
     </ul>
