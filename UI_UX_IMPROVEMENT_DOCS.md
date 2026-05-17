@@ -2,8 +2,57 @@
 **Project:** GarudaCBT + LMS  
 **Versi App:** 1.5.3  
 **Dibuat:** 2026-05-16  
+**Terakhir Diperbarui:** 2026-05-17  
 **Author:** Antigravity AI (Senior UI/UX + Fullstack)  
 **Status:** 🟡 In Progress
+
+---
+
+## 🚀 Quick Start — Baca Ini Dulu!
+
+> [!IMPORTANT]
+> Baca seluruh bagian ini sebelum menyentuh satu baris kode pun.
+
+### Langkah Orientasi (Developer Baru)
+
+```bash
+# 1. Masuk ke direktori development
+cd /root/cbt/cbt
+
+# 2. Pastikan ada di branch yang benar
+git branch
+# Output yang benar: * feature/ui-ux-improvement-2026
+# Jika belum, jalankan:
+git checkout feature/ui-ux-improvement-2026
+
+# 3. Lihat status terakhir
+git log --oneline -10
+git status
+
+# 4. Baca dokumen ini sampai selesai, BARU mulai kerja
+```
+
+### Dua Direktori Utama — WAJIB HAFAL
+
+| Direktori | Fungsi | Aturan |
+|-----------|--------|--------|
+| `/root/cbt/cbt/` | **Development** — source of truth | Semua edit di sini |
+| `/var/www/html/cbt/` | **Production** — Apache serve | Hanya sync, JANGAN edit langsung |
+| `/root/cbt/lms/` | **Referensi** — kode lms asli | Jangan diubah, acuan saja |
+
+### Alur Kerja Wajib (Setiap Sesi)
+
+```
+[1] Baca dok ini       →  Pahami konteks fase yang akan dikerjakan
+[2] git branch check   →  Pastikan di branch feature/ui-ux-improvement-2026
+[3] git status         →  Lihat kondisi sebelum mulai
+[4] Edit file          →  Hanya di /root/cbt/cbt/
+[5] Test browser       →  Cek visual di http://localhost/cbt
+[6] git add + commit   →  Dengan format konvensi commit (lihat seksi Git)
+[7] Sync ke Apache     →  cp atau rsync ke /var/www/html/cbt/
+[8] Verifikasi deploy  →  Cek file sudah terupdate di Apache
+[9] Update dokumen ini →  Catat apa yang dikerjakan, file apa yang diubah
+```
 
 ---
 
@@ -497,10 +546,27 @@ git checkout -b experiment/test-something master
 | `3b464291` | Phase 2 Dashboard Stats Animation COMPLETE | ✅ Checkpoint |
 | `faa502cd` | Phase 3 Skeleton Loading COMPLETE | ✅ Checkpoint |
 | `75c0b5d0` | Phase 4 Empty States COMPLETE | ✅ Checkpoint |
-| `3066e67f` | **Phase 5 Exam Interface Polish COMPLETE** | ✅ Checkpoint aktif |
+| `3066e67f` | Phase 5 Exam Interface Polish COMPLETE | ✅ Checkpoint |
+| `5c46f621` | Phase 6 Form & Input Polish COMPLETE | ✅ Checkpoint |
+| `8a673d57` | Phase 7 Mobile Optimization COMPLETE | ✅ Checkpoint |
+| `73acb240` | Phase 8 Nice to Have COMPLETE | ✅ Checkpoint |
+| `b854fab0` | **Phase 9 Full Audit COMPLETE** | ✅ Checkpoint aktif |
 
 > [!TIP]
 > Setiap awal fase baru (Fase 1, 2, 3, dst), catat hash commit terakhir di tabel ini agar ada checkpoint yang jelas.
+
+### Checklist Pre-Commit (Wajib Sebelum `git commit`)
+
+Sebelum setiap commit, pastikan semua centang:
+
+```
+[ ] File yang diedit sudah disimpan
+[ ] Tidak ada CSS/JS syntax error (cek browser console)
+[ ] Visual sudah dicek di browser (http://localhost/cbt)
+[ ] Hanya file yang relevan yang di-add (git status bersih)
+[ ] Pesan commit mengikuti konvensi format
+[ ] Dokumen ini sudah diupdate (catat file changed + deskripsi)
+```
 
 ### Merge ke Master (Saat Sudah Siap)
 ```bash
@@ -509,6 +575,47 @@ git checkout master
 git merge feature/ui-ux-improvement-2026 --no-ff \
   -m "feat: UI/UX improvement - Foundation Phase complete"
 git push origin master
+```
+
+---
+
+## 📋 SOP Dokumentasi Wajib (Setiap Fase Selesai)
+
+> [!IMPORTANT]
+> Dokumentasi adalah bagian dari pekerjaan, bukan opsional. Fase dianggap BELUM selesai jika dokumentasi belum diupdate.
+
+### Yang Wajib Dicatat Setelah Setiap Fase:
+
+**1. Update bagian "Yang Sudah Dikerjakan":**
+```markdown
+#### N. ✅ [Nama Fase]
+**Problem:** [Masalah yang diselesaikan]
+**Solution:** [Solusi yang diterapkan]
+**Files Changed:**
+- `path/file.ext` — deskripsi singkat perubahan
+```
+
+**2. Centang semua task di bagian TODO:**
+```markdown
+- [x] N.1 Task sudah selesai
+```
+
+**3. Tambah commit hash ke tabel Checkpoint:**
+```markdown
+| `[hash]` | Phase N [Nama] COMPLETE | ✅ Checkpoint |
+```
+
+**4. Update Progress Overview:**
+```markdown
+Fase N — Nama    ██████████ 100%  [✅] SELESAI — commit [hash]
+```
+
+**5. Catat di bagian "Catatan Sesi":**
+```markdown
+### Sesi N — [Tanggal]
+- Ringkasan singkat apa yang dikerjakan
+- Kendala yang ditemukan (jika ada)
+- Keputusan teknis yang diambil
 ```
 
 ---
@@ -535,12 +642,46 @@ rsync -av --checksum \
 
 ### Verifikasi Deploy
 ```bash
-# Cek CSS sudah terupdate
-grep -n "KEYWORD" /var/www/html/cbt/assets/app/css/mystyle.css
+# 1. Cek timestamp file sudah berubah
+ls -la /var/www/html/cbt/assets/app/css/mystyle.css
 
-# Cek tidak ada sisa margin-top -1px
+# 2. Cek keyword perubahan terakhir ada di production
+grep -n "KEYWORD_UNIK" /var/www/html/cbt/assets/app/css/mystyle.css
+
+# 3. Cek tidak ada sisa margin-top -1px
 find /var/www/html/cbt/application/views/members/siswa -name "*.php" \
   -exec grep -l "margin-top: -1px" {} \;
+
+# 4. Restart Apache jika cache PHP bermasalah
+service apache2 reload
+```
+
+### Bulk Sync — Semua Assets Sekaligus
+```bash
+# Sync semua CSS
+rsync -av --checksum \
+  /root/cbt/cbt/assets/app/css/ \
+  /var/www/html/cbt/assets/app/css/
+
+# Sync semua JS
+rsync -av --checksum \
+  /root/cbt/cbt/assets/app/js/ \
+  /var/www/html/cbt/assets/app/js/
+
+# Sync semua Views
+rsync -av --checksum \
+  /root/cbt/cbt/application/views/ \
+  /var/www/html/cbt/application/views/
+
+# Sync controllers (jika ada yang baru, misal Api.php)
+rsync -av --checksum \
+  /root/cbt/cbt/application/controllers/ \
+  /var/www/html/cbt/application/controllers/
+
+# Sync SEMUA sekaligus (hati-hati, pastikan tidak ada file yang tidak perlu)
+rsync -av --checksum \
+  /root/cbt/cbt/ \
+  /var/www/html/cbt/
 ```
 
 ---
@@ -594,10 +735,29 @@ Fase 5 — Exam Interface        ██████████ 100%  [✅] SELE
 Fase 6 — Form Polish           ██████████ 100%  [✅] SELESAI — commit 5c46f621
 Fase 7 — Mobile Optimization   ██████████ 100%  [✅] SELESAI — commit 8a673d57
 Fase 8 — Nice to Have          ██████████ 100%  [✅] SELESAI — commit 73acb240
-Fase 9 — Full Codebase Audit   ██████████ 100%  [✅] SELESAI — audit doc: fase9_full_audit.md
+Fase 9 — Full Codebase Audit   ██████████ 100%  [✅] SELESAI — commit b854fab0
+
+Fase 10 — Polish & Next Phase  ░░░░░░░░░░   0%  [🔲] BELUM DIMULAI
 
 Foundation (Pattern + Spacing) ██████████ 100%  [✅] SELESAI
 ```
+
+---
+
+## 🔲 Fase 10 — Rencana Selanjutnya
+
+> [!NOTE]
+> Fase ini belum dikerjakan. Isi dan prioritas dapat berubah sesuai kebutuhan. Update bagian ini sebelum memulai.
+
+### Kandidat Task Fase 10:
+- [ ] **10.1** Print / ekspor nilai siswa — CSS `@media print` agar tabel nilai bisa dicetak rapi
+- [ ] **10.2** Accessibility audit — tambah `aria-label`, `role`, dan keyboard navigation
+- [ ] **10.3** Error page custom — halaman 404/500 dengan branding GarudaCBT
+- [ ] **10.4** Loading state global — spinner overlay saat AJAX panjang
+- [ ] **10.5** Optimasi font — self-host Poppins agar tidak bergantung Google Fonts CDN
+
+> [!TIP]
+> Sebelum memulai Fase 10, lakukan mini-audit: cek apakah ada issue dari Fase 9 yang belum diimplementasikan.
 
 ---
 
@@ -610,6 +770,16 @@ Foundation (Pattern + Spacing) ██████████ 100%  [✅] SELESA
 - Semua pattern menggunakan CSS-only (zero external image dependency)
 - `/root/cbt/lms/` digunakan sebagai referensi saja, tidak diubah
 
+### Sesi 2 — 2026-05-17
+- Review menyeluruh dokumen: gap diidentifikasi dan diperbaiki
+- Ditambahkan: Quick Start section untuk developer baru
+- Ditambahkan: Checklist pre-commit wajib
+- Ditambahkan: SOP Dokumentasi Wajib (template standar pencatatan)
+- Dilengkapi: Tabel checkpoint hash commit Fase 6–9 yang sebelumnya kosong
+- Diperbaiki: SOP Deploy dengan verifikasi lengkap + bulk sync semua assets
+- Ditambahkan: Fase 10 — kandidat task berikutnya
+- Keputusan: dokumen ini harus menjadi satu-satunya referensi operasional proyek
+
 ---
 
-*Dokumen ini harus diupdate setiap kali ada perubahan yang selesai dikerjakan.*
+*Dokumen ini adalah **living document** — wajib diupdate setiap kali ada perubahan yang selesai dikerjakan. Fase dianggap belum selesai jika dokumentasi belum diperbarui.*
