@@ -534,6 +534,19 @@
             }
         }
 
+        // 6.3 - Pastikan Katex merender equation setelah konten soal disuntikkan via AJAX
+        if (typeof renderMathInElement !== 'undefined') {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false},
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ],
+                throwOnError: false
+            });
+        }
+
         arrSize = [];
     }
 

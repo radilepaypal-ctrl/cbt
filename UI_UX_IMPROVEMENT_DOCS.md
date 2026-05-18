@@ -803,6 +803,8 @@ Foundation (Pattern + Spacing) ██████████ 100%  [✅] SELESA
   - Menyuntikkan fitur *Dark Mode Toggle* dan *Badge Notifikasi Ujian* langsung ke *navbar* bawaan di `members/siswa/templates/header.php` yang sebelumnya terlewat dari implementasi Fase 8.
   - Menambahkan `stats-animation.js` pada *footer* Siswa agar melengkapi cakupan Fase 2 secara komprehensif di seluruh role (Admin, Guru, Siswa).
   - Mengintegrasikan fungsi Skeleton Loading (Fase 3) khusus pada *card* Jadwal Siswa (struktur HTML-nya berbeda dari Admin/Guru) dan menambahkan efek skeleton memukau saat siswa melakukan proses sinkronisasi AJAX (tombol *Reload*).
+- Validasi **Fase 4 (Empty States)** & **Fase 5 (Exam Interface Polish)**: Telah selesai 100%. Semua *floating icon*, varian warna (info, muted, warning), CSS radius, dan notifikasi konfirmasi di halaman `konfirmasi.php` berjalan sempurna.
+- Perbaikan **Fase 6 (Exam Navigation Polish)**: Ditemukan *bug* minor di mana *script* perender rumus matematika (KaTeX) tidak berjalan ketika soal ujian berikutnya dipanggil secara dinamis (*AJAX*). Solusi: Menyuntikkan perintah `renderMathInElement(document.body)` secara langsung pada respons *callback* AJAX di `cbt/ujian.php`.
 - Deployment berhasil disinkronisasikan ke Apache tanpa error runtime atau syntax error.
 
 ---
