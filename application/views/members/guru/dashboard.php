@@ -167,25 +167,29 @@
                             <div class="row">
                                 <?php foreach ($ujian_box as $info) : ?>
                                     <div class="col-md-4 col-6" style="min-height: 60px">
-                                        <div class="info-box border p-1 shadow-sm" style="min-height: 60px; border-radius: 15px;">
-                                            <div class="info-box-content p-1 text-danger">
-                                                <span class="info-box-text text-sm"><?= $info->title; ?></span>
-                                                <h5 class="info-box-number m-0"><?= $info->total; ?></h5>
+                                        <a href="<?= base_url() . ($info->url ?? '#') ?>">
+                                            <div class="info-box border p-1 shadow-sm" style="min-height: 60px; border-radius: 15px;">
+                                                <div class="info-box-content p-1 text-danger">
+                                                    <span class="info-box-text text-sm"><?= $info->title; ?></span>
+                                                    <h5 class="info-box-number m-0"><?= $info->total; ?></h5>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 <?php endforeach; ?>
                                 <div class="col-md-4 col-6" style="min-height: 60px">
-                                    <div class="info-box border p-1 shadow-sm" style="min-height: 60px; border-radius: 15px;">
-                                        <div class="info-box-content p-1 text-danger">
-                                            <span class="info-box-text text-sm">Token</span>
-                                            <div>
-                                                <h5 class="info-box-number m-0"><span id="token-view"><?= $token->token != null ? $token->token : '- - - - - -' ?></span>
-                                                <button class="float-right btn btn-sm btn-default d-none" id="refresh-token"><i class="fa fa-refresh"></i> </button>
-                                                </h5>
+                                    <a href="<?= base_url('cbttoken') ?>">
+                                        <div class="info-box border p-1 shadow-sm" style="min-height: 60px; border-radius: 15px;">
+                                            <div class="info-box-content p-1 text-danger">
+                                                <span class="info-box-text text-sm">Token</span>
+                                                <div>
+                                                    <h5 class="info-box-number m-0"><span id="token-view"><?= $token->token != null ? $token->token : '- - - - - -' ?></span>
+                                                    <button class="float-right btn btn-sm btn-default d-none" id="refresh-token"><i class="fa fa-refresh"></i> </button>
+                                                    </h5>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                             <hr>
@@ -198,7 +202,7 @@
                                     $no = 1;
                                     $jadwal_ujian = $jadwals_ujian[date('Y-m-d')] ?? [];
                                     if (count($jadwal_ujian) > 0) : ?>
-                                        <table id="tbl-penilaian" class="table table-bordered">
+                                        <table id="tbl-penilaian" class="table table-bordered table-sm">
                                             <tr>
                                                 <th class="text-center align-middle">NO</th>
                                                 <th class="text-center align-middle">RUANG</th>
