@@ -71,6 +71,7 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <div id="list-jadwal">
                             <?php
                             if ($kbms != null) :
                                 if (count($jadwals) > 0):
@@ -140,6 +141,7 @@
                                     <p class="empty-state__desc">Jadwal untuk kelas <?= $siswa->nama_kelas ?> belum dibuat.</p>
                                 </div>
                             <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -698,6 +700,14 @@
     function loadJadwal() {
         var date = new Date();
         var hari = date.getDay();
+
+        // Skeleton loading untuk AJAX reload
+        var skeletonHtml = '<div class="skeleton-wrapper" style="padding: 10px">';
+        for (var i = 0; i < 4; i++) {
+            skeletonHtml += '<div class="skeleton-table-row skeleton-wrapper"><span class="skeleton skeleton-table-cell-time"></span><span class="skeleton skeleton-table-cell-text"></span></div>';
+        }
+        skeletonHtml += '</div>';
+        $('#list-jadwal').html(skeletonHtml);
 
         $.ajax({
             type: 'GET',

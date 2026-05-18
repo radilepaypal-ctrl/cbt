@@ -127,7 +127,7 @@
         // Jadwal dirender server-side, tidak ada AJAX — tapi tabel bisa
         // lambat paint jika banyak kelas. Kita tambahkan skeleton wrapper
         // di atas tabel asli, lalu hapus setelah tabel siap dirender.
-        var $tabPanes = $('.tab-pane .table-responsive');
+        var $tabPanes = $('.tab-pane .table-responsive, #list-jadwal .table-responsive');
         if ($tabPanes.length === 0) return;
 
         $tabPanes.each(function () {
@@ -218,7 +218,7 @@
         }
 
         // 3.3 — Jadwal skeleton (hanya di halaman yang ada tabel jadwal)
-        if ($('.tab-pane .table-responsive table.w-100').length > 0) {
+        if ($('.tab-pane .table-responsive table.w-100, #list-jadwal .table-responsive table.w-100').length > 0) {
             initJadwalSkeleton();
         }
 
