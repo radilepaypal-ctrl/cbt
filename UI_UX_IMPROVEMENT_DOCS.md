@@ -798,6 +798,7 @@ Foundation (Pattern + Spacing) ██████████ 100%  [✅] SELESA
   - Class `table-sm` ditambahkan ke tabel Guru.
   - CSS `modern_emerald.css` yang tertinggal di `header.php` Guru dan Siswa akhirnya diintegrasikan agar seluruh role memiliki tema background konsisten.
   - Teks Footer Guru disamakan dengan Admin (LMS SMKN 7 SAMARINDA).
+  - Menambahkan pemanggilan `stats-animation.js` pada *footer* Guru agar animasi angka (*count-up*) dan efek kemunculan bertahap (*staggered cascade*) pada *stat cards* dapat berjalan sebagaimana di Admin.
 - Deployment berhasil disinkronisasikan ke Apache tanpa error runtime atau syntax error.
 
 ---
