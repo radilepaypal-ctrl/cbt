@@ -799,6 +799,9 @@ Foundation (Pattern + Spacing) ██████████ 100%  [✅] SELESA
   - CSS `modern_emerald.css` yang tertinggal di `header.php` Guru dan Siswa akhirnya diintegrasikan agar seluruh role memiliki tema background konsisten.
   - Teks Footer Guru disamakan dengan Admin (LMS SMKN 7 SAMARINDA).
   - Menambahkan pemanggilan `stats-animation.js` pada *footer* Guru agar animasi angka (*count-up*) dan efek kemunculan bertahap (*staggered cascade*) pada *stat cards* dapat berjalan sebagaimana di Admin.
+- Penyelarasan tampilan Dashboard Siswa:
+  - Menyuntikkan fitur *Dark Mode Toggle* dan *Badge Notifikasi Ujian* langsung ke *navbar* bawaan di `members/siswa/templates/header.php` yang sebelumnya terlewat dari implementasi Fase 8.
+  - Menambahkan `stats-animation.js` pada *footer* Siswa agar melengkapi cakupan Fase 2 secara komprehensif di seluruh role (Admin, Guru, Siswa).
 - Deployment berhasil disinkronisasikan ke Apache tanpa error runtime atau syntax error.
 
 ---

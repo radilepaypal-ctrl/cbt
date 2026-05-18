@@ -176,6 +176,19 @@ $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
             </li>
         </ul>
         <ul class="navbar-nav <?= $display_logout ?>">
+            <!-- Badge notifikasi ujian aktif hari ini -->
+            <li class="nav-item mr-2">
+                <a href="<?= base_url('siswa/cbt') ?>" class="nav-link text-white" id="ujian-badge-btn" title="Ujian Hari Ini" aria-label="Daftar ujian hari ini">
+                    <i class="fas fa-clipboard-list" aria-hidden="true"></i>
+                    <span class="badge badge-danger navbar-badge d-none" id="ujian-badge-count">0</span>
+                </a>
+            </li>
+            <!-- Dark mode toggle -->
+            <li class="nav-item mr-3">
+                <a href="#" class="nav-link btn-theme-toggle text-white" title="Mode Gelap" role="button" aria-label="Toggle mode gelap">
+                    <i class="fas fa-moon theme-toggle-icon" aria-hidden="true"></i>
+                </a>
+            </li>
             <li class="nav-item">
                 <button onclick="logout()" class="btn btn-danger btn-outline-light">
                     <span class="d-none d-sm-inline-block mr-2">Logout</span><i class="fas fa-sign-out-alt"></i>
@@ -193,4 +206,30 @@ $display_logout = $this->uri->segment(2) == "penilaian" ? 'd-none' : '';
                 $('#back').addClass('d-none')
             }
         }
+    </script>
+
+    <!-- Script Dark Mode & Ujian Badge -->
+    <script src="<?= base_url() ?>/assets/app/js/dark-mode.js"></script>
+    <script>
+    /* Badge ujian: fetch count dari /api/badge_ujian */
+    (function() {
+        function loadBadge() {
+            $.getJSON(base_url + 'api/badge_ujian', function(data) {
+                var count = data.count || 0;
+                var badge = document.getElementById('ujian-badge-count');
+                if (badge && count > 0) {
+                    badge.textContent = count > 9 ? '9+' : count;
+                    badge.classList.remove('d-none');
+                    badge.style.animation = 'examPulse 1.5s ease-in-out 3';
+                }
+            }).fail(function() {
+                // Gagal fetch
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadBadge);
+        } else {
+            loadBadge();
+        }
+    })();
     </script>
