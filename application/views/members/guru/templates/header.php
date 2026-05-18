@@ -81,6 +81,7 @@
     <!-- /texarea editor; -->
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/mystyle.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/modern_emerald.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/app/css/font-material.css">
 
     <link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/bootstrap-icon/bootstrap-icons.css">
