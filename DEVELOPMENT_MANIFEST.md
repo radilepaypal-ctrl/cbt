@@ -19,6 +19,12 @@
 9. [AI Assistant Protocol](#9-ai-assistant-protocol)
 10. [Riwayat Pekerjaan Selesai](#10-riwayat-pekerjaan-selesai)
 
+### 📄 Dokumen Terkait
+| Dokumen | Lokasi | Status |
+|---------|--------|---------|
+| **UI/UX Review 2026** | [`docs/UI_UX_REVIEW_2026.md`](docs/UI_UX_REVIEW_2026.md) | 🔴 Belum dimulai |
+| **UI/UX Arsip Fase 1-10** | [`docs/archive/UI_UX_IMPROVEMENT_DOCS_fase1-10_SELESAI.md`](docs/archive/UI_UX_IMPROVEMENT_DOCS_fase1-10_SELESAI.md) | ✅ Referensi saja |
+
 ---
 
 ## 1. Struktur Folder & Deployment
@@ -185,6 +191,25 @@ d088b5ed  fix: penyelesaian fase 2 dan 8 untuk tampilan siswa
 - [ ] **D1.** Test menyeluruh setelah semua security fix: login admin, guru, siswa, ujian, upload
 - [ ] **D2.** Buat tag final setelah Fase B+C selesai: `v1.7.0-stable`
 - [ ] **D3.** Update bagian [Riwayat Pekerjaan](#10-riwayat-pekerjaan-selesai) di dokumen ini
+
+---
+
+### 🎨 FASE E — UI/UX Review & Improvement (Tracing Ulang)
+
+> Dikerjakan **setelah Fase B & C selesai** agar kondisi aplikasi sudah stabil & aman.  
+> Detail checklist per halaman ada di 👉 [`docs/UI_UX_REVIEW_2026.md`](docs/UI_UX_REVIEW_2026.md)
+
+- [ ] **E1.** Modul 1 — Auth & Login (6 halaman)
+- [ ] **E2.** Modul 2 — Dashboard Admin, Guru, Siswa
+- [ ] **E3.** Modul 3 — Data Master (18 halaman)
+- [ ] **E4.** Modul 4 — E-Learning / Kelas (18 halaman)
+- [ ] **E5.** Modul 5 — CBT Admin/Guru (26 halaman)
+- [ ] **E6.** Modul 6 — CBT Siswa (3 halaman — ⚠️ Prioritas Tinggi)
+- [ ] **E7.** Modul 7 — Rapor & Nilai (22 halaman)
+- [ ] **E8.** Modul 8 — Pengaturan & User Management (12 halaman)
+- [ ] **E9.** Modul 9 — Template & Layout Global (16 file)
+- [ ] **E10.** Modul 10 — Error Pages (5 halaman)
+- [ ] **E11.** Buat tag setelah UI/UX Fase E selesai: `v1.8.0-stable`
 
 ---
 
