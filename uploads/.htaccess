@@ -1,0 +1,14 @@
+# [SECURITY] Blokir eksekusi PHP di folder uploads — 2026-05-22
+# Menggunakan SetHandler None karena server memakai PHP-FPM (bukan mod_php)
+
+# Hapus PHP-FPM handler untuk semua ekstensi PHP
+<FilesMatch "\.ph(?:ar|p|p3|p4|p5|p7|p8|tml|ps)$">
+    SetHandler None
+    Require all denied
+</FilesMatch>
+
+# Pastikan file upload biasa tetap bisa diakses
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|pdf|doc|docx|xls|xlsx|zip|mp4|mp3|txt|html|css|js|json)$">
+    Require all granted
+</FilesMatch>
+
