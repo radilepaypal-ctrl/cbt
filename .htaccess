@@ -3,3 +3,24 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
 
+# ============================================================
+# [SECURITY] Blokir akses ke file sensitif — 2026-05-22
+# ============================================================
+
+# Blokir file konfigurasi & dokumentasi yang tidak perlu diakses publik
+<FilesMatch "^(composer\.(json|lock)|options\.json|plus\.md|README.*\.md|LICENCE\.md|license\.txt|\.gitignore|\.idea|garudacbt\.iml)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Blokir akses ke direktori development & VCS
+RedirectMatch 403 /\.git
+RedirectMatch 403 /\.idea
+RedirectMatch 403 /backups
+RedirectMatch 403 /docs
+
+# Blokir file PHP backup/installer setelah instalasi selesai
+# (Uncomment jika installer sudah tidak digunakan)
+# RedirectMatch 403 /installer
+
+
