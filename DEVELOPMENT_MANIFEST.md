@@ -57,7 +57,8 @@ master                              ← Base stabil original
 | `v1.6.2-stable` | `70d35a90` | Stats-animation guru + dashboard alignment | ✅ **Stabil Terakhir** |
 | `v1.6.1-stable` | `e8ca41b4` | Penyelarasan dashboard admin/guru | ✅ Stabil |
 | `v1.6.0-gemini.1` | `bfb80736` | UI/UX Fase 10 selesai | ✅ Stabil |
-| `v1.6.3-stable` | — | **[BELUM DIBUAT]** Setelah KaTeX fix | ⏳ Perlu dibuat |
+| `v1.6.3-stable` | `467e6516` | Manifest restrukturisasi + UI/UX doc baru | ✅ Dibuat |
+| `v1.7.0-security` | `d0dfc10f` | **Security Hardening B1-B4 SELESAI** | ✅ **Tag terbaru** |
 
 > **Cara kembali ke versi stabil:**
 > ```bash
@@ -68,10 +69,12 @@ master                              ← Base stabil original
 
 ### Commit Terbaru (sejak v1.6.2-stable)
 ```
-4ff9845b  fix(siswa): KaTeX ter-render setelah soal AJAX  ← HEAD
-3ff454a4  docs: log skeleton loading fase 3 siswa
-cae0cbf1  feat(siswa): skeleton loading fase 3 tabel jadwal siswa
-d088b5ed  fix: penyelesaian fase 2 dan 8 untuk tampilan siswa
+d0dfc10f  fix(security): blokir PHP execution di uploads/ (B4)  ← HEAD
+f4ffc32e  fix(security): blokir file sensitif via .htaccess (B3)
+f5d0a48f  fix(security): csrf_regenerate + csrf-refresh.js (B2)
+65b45c02  fix(security): cookie_httponly = TRUE (B1)
+0f94c6a2  docs: UI_UX_REVIEW_2026.md + update manifest
+467e6516  (tag: v1.6.3-stable)  docs: manifest restrukturisasi
 70d35a90  (tag: v1.6.2-stable)  ← titik aman sebelumnya
 ```
 
@@ -86,19 +89,9 @@ d088b5ed  fix: penyelesaian fase 2 dan 8 untuk tampilan siswa
 
 ### 🏷️ FASE A — Version Control Checkpoint (SEKARANG)
 
-- [ ] **A1. Buat tag `v1.6.3-stable`** untuk commit HEAD saat ini
-  ```bash
-  cd /root/cbt/cbt
-  git add DEVELOPMENT_MANIFEST.md
-  git commit -m "docs: restrukturisasi manifest — merge semua dok, tambah to-do list security"
-  git tag -a v1.6.3-stable -m "checkpoint: KaTeX fix + skeleton siswa + manifest restrukturisasi"
-  ```
-- [ ] **A2. Hapus file dokumentasi lama yang sudah tidak aktif** ✅ *(sudah dihapus: README_149.md, README_152.md, _Sidebar.md, contributing.md)*
-- [ ] **A3. Archive UI_UX_IMPROVEMENT_DOCS.md** — pindah ke folder `docs/archive/`
-  ```bash
-  mkdir -p docs/archive
-  mv UI_UX_IMPROVEMENT_DOCS.md docs/archive/UI_UX_IMPROVEMENT_DOCS_fase1-10_SELESAI.md
-  ```
+- [x] **A1.** ~~Buat tag `v1.6.3-stable`~~ — ✅ Done `467e6516`
+- [x] **A2.** ~~Hapus file dokumentasi lama~~ — ✅ Done (README_149.md, README_152.md, _Sidebar.md, contributing.md)
+- [x] **A3.** ~~Archive UI_UX_IMPROVEMENT_DOCS.md~~ — ✅ Done → `docs/archive/`
 
 ---
 
@@ -106,43 +99,35 @@ d088b5ed  fix: penyelesaian fase 2 dan 8 untuk tampilan siswa
 
 > Kerjakan urut. Setiap sub-task: edit file → deploy → verifikasi → commit → tag.
 
-#### B1. Fix `cookie_httponly` — Proteksi Session dari XSS
-**File:** `application/config/config.php` baris 125  
-**Risk:** Session cookie bisa dicuri via JavaScript jika ada XSS  
-- [ ] Ubah `$config['cookie_httponly'] = FALSE;` → `TRUE`
-- [ ] Deploy ke Apache: `cp application/config/config.php /var/www/html/cbt/application/config/config.php`
-- [ ] Verifikasi login masih berfungsi normal
-- [ ] Commit: `fix(security): aktifkan cookie_httponly untuk proteksi session`
+#### B1. ~~Fix `cookie_httponly`~~ ✅ SELESAI — commit `65b45c02`
+- [x] `cookie_httponly`: FALSE → TRUE
+- [x] Deploy + verifikasi: `Set-Cookie: ... HttpOnly` terlihat di response header
+- [x] Commit: `fix(security): aktifkan cookie_httponly untuk proteksi session dari XSS`
 
-#### B2. Fix `csrf_regenerate` — CSRF Token Lebih Kuat
-**File:** `application/config/config.php` baris 187  
-**Risk:** Token CSRF fixed/tidak diperbarui → lebih mudah diserang  
-- [ ] Ubah `$config['csrf_regenerate'] = FALSE;` → `TRUE`
-- [ ] Test semua form AJAX (login, bank soal, jadwal) — pastikan tidak ada error `Token Mismatch`
-- [ ] Jika ada AJAX error: tambahkan token refresh di JS yang bermasalah
-- [ ] Deploy + verifikasi
-- [ ] Commit: `fix(security): aktifkan csrf_regenerate`
+#### B2. ~~Fix `csrf_regenerate`~~ ✅ SELESAI — commit `f5d0a48f`
+- [x] `csrf_regenerate`: FALSE → TRUE
+- [x] Buat `assets/app/js/csrf-refresh.js` — auto-refresh token dari cookie via `$.ajaxComplete`
+- [x] Include `csrf-refresh.js` di 3 footer: admin, guru, siswa
+- [x] Deploy + verifikasi: HTTP 200, cookie `HttpOnly + SameSite` aktif
+- [x] Commit: `fix(security): aktifkan csrf_regenerate + tambah csrf-refresh.js`
 
-#### B3. Blokir Akses File Sensitif via .htaccess
-**File:** `.htaccess` (root project)  
-**Risk:** `composer.json`, `options.json`, `README.md`, dll bisa diakses dari browser  
-- [ ] Tambahkan rule deny di `.htaccess`
-- [ ] Verifikasi: `curl http://172.19.1.201/composer.json` harus return 403
-- [ ] Deploy + commit: `fix(security): blokir akses file sensitif via htaccess`
+#### B3. ~~Blokir Akses File Sensitif via .htaccess~~ ✅ SELESAI — commit `f4ffc32e`
+- [x] `composer.json`, `README.md`, `options.json`, `.git`, `docs/` → return 403
+- [x] Deploy + verifikasi: semua 403, login/dashboard tetap 200
+- [x] Commit: `fix(security): blokir akses file sensitif via .htaccess`
+
+#### B4. ~~Blokir Eksekusi PHP di `uploads/`~~ ✅ SELESAI — commit `d0dfc10f`
+- [x] Buat `uploads/.htaccess` dengan `SetHandler None + Require all denied` (PHP-FPM compatible)
+- [x] Deploy ke 8 subfolder + turunkan permission 777 → 755
+- [x] Verifikasi: PHP file di uploads → 403 Forbidden, gambar → 200 OK
+- [x] Commit: `fix(security): blokir eksekusi PHP di folder uploads/`
+- [x] **Tag checkpoint: `v1.7.0-security`** ✅
 
 #### B4. Blokir Eksekusi PHP di Folder `uploads/`
 **File:** Buat `uploads/.htaccess` dan subfolder masing-masing  
 **Risk:** Upload bypass → eksekusi webshell PHP  
 - [ ] Buat `.htaccess` di `uploads/` berisi:
-  ```apache
-  php_flag engine off
-  Options -ExecCGI
-  AddType text/plain .php .php3 .php4 .php5 .phtml
-  ```
-- [ ] Salin ke semua subfolder (`bank_soal/`, `foto_siswa/`, `materi/`, dll)
-- [ ] Turunkan permission: `chmod -R 755 /var/www/html/cbt/uploads/`
-- [ ] Verifikasi upload foto siswa masih berfungsi
-- [ ] Commit: `fix(security): blokir PHP execution di folder uploads`
+
 
 #### B5. Proteksi Kredensial Database (Planning)
 **File:** `application/config/database.php`  
