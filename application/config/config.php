@@ -184,7 +184,7 @@ $config['csrf_protection'] = TRUE;
 $config['csrf_token_name'] = 'csrf_token';
 $config['csrf_cookie_name'] = 'csrf_cookie';
 $config['csrf_expire'] = 9000;
-$config['csrf_regenerate'] = FALSE;
+$config['csrf_regenerate'] = TRUE;  // [SECURITY] Token diperbarui setiap request — 2026-05-22
 $config['csrf_exclude_uris'] = array(
     'kelasmateri/saveMateri',
     'kelasmateri/uploadfile',

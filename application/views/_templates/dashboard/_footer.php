@@ -108,6 +108,9 @@
 <!-- Fase 10: Global AJAX Loader -->
 <script src="<?= base_url() ?>/assets/app/js/global-loader.js"></script>
 
+<!-- Security: Auto-refresh CSRF token setelah setiap AJAX (csrf_regenerate=TRUE) -->
+<script src="<?= base_url() ?>/assets/app/js/csrf-refresh.js"></script>
+
 <!-- Custom JS -->
 <script type="text/javascript">
     $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
